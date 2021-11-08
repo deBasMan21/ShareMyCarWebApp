@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dis/ShareMyCarWebApp",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
