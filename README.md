@@ -10,12 +10,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   <img src="https://img.shields.io/github/last-commit/deBasMan21/ShareMyCarWebApp" />
   <img src="https://img.shields.io/github/languages/code-size/deBasMan21/ShareMyCarWebApp?color=brightgreen" />
   <br/>
-   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
-   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"/>
-   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
   <br/>
   <br/>
-   <a href="https://sharemycarwebapp.web.app/">Webapp - on firebase<a/>
+  <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+  <br/>
+  <br/>
+  <a href="https://sharemycarwebapp.web.app/">Open Webapp<a/>
 
 
 </div>
