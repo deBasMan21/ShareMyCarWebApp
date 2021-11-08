@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dis/ShareMyCarWebApp",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
