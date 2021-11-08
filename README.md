@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
 <div align="center">
+  
   <img src="https://img.shields.io/website?down_color=red&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fangular-sandbox-avans.web.app%2F"/>
   <img src="https://img.shields.io/github/workflow/status/deBasMan21/ShareMyCarWebApp/ci-cd" />
   <img src="https://img.shields.io/github/commit-activity/m/deBasMan21/ShareMyCarWebApp" />
