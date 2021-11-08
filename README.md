@@ -2,6 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
+<div align="center">
+  <img src="https://img.shields.io/website?down_color=red&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fangular-sandbox-avans.web.app%2F"/>
+  <img src="https://img.shields.io/github/workflow/status/Pjiwm/angular-sandbox/ci-cd" />
+  <img src="https://img.shields.io/github/commit-activity/m/pjiwm/angular-sandbox" />
+  <img src="https://img.shields.io/github/last-commit/pjiwm/angular-sandbox" />
+  <img src="https://img.shields.io/github/languages/code-size/Pjiwm/angular-sandbox" />
+  <img src="https://img.shields.io/github/forks/Pjiwm/angular-sandbox?style=social"/>
+  <br/>
+   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"/>
+  <br/>
+  <br/>
+   <a href="https://angular-sandbox-avans.web.app/">Webapp - on firebase<a/>
+
+
+</div>
+<hr/>
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
