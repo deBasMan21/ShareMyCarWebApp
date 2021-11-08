@@ -4,11 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <div align="center">
   <img src="https://img.shields.io/website?down_color=red&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fangular-sandbox-avans.web.app%2F"/>
-  <img src="https://img.shields.io/github/workflow/status/Pjiwm/angular-sandbox/ci-cd" />
-  <img src="https://img.shields.io/github/commit-activity/m/pjiwm/angular-sandbox" />
-  <img src="https://img.shields.io/github/last-commit/pjiwm/angular-sandbox" />
-  <img src="https://img.shields.io/github/languages/code-size/Pjiwm/angular-sandbox" />
-  <img src="https://img.shields.io/github/forks/Pjiwm/angular-sandbox?style=social"/>
+  <img src="https://img.shields.io/github/workflow/status/deBasMan21/ShareMyCarWebApp/ci-cd" />
+  <img src="https://img.shields.io/github/commit-activity/m/deBasMan21/ShareMyCarWebApp" />
+  <img src="https://img.shields.io/github/last-commit/deBasMan21/ShareMyCarWebApp" />
+  <img src="https://img.shields.io/github/languages/code-size/deBasMan21/ShareMyCarWebApp" />
   <br/>
    <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"/>
    <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"/>
