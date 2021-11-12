@@ -1,0 +1,22 @@
+<div class="carlist">
+    <div class="carlist-title">
+        <span class="carlist-title-filler"></span>
+        <h1>Jouw auto's</h1>
+        <span class="material-icons">add</span>
+    </div>
+    <div class="carlist-list">
+        <div class="carlist-list-item" *ngFor="let car of cars">
+            <div class="carlist-list-item-image">
+                <a routerLink="/car/{{car.id}}">
+                    <img src="{{car.imgSrc}}">
+                </a>
+            </div>
+            <div class="carlist-list-item-info">
+                <span>
+                    <strong>{{car.name}}</strong>
+                </span>
+                <span>{{car.plate}}</span>
+            </div>
+        </div>
+    </div>
+</div>

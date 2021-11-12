@@ -1,0 +1,55 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+
+    &-logo{
+        width: 20%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        a{
+            width: 30%;
+            img{
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    }
+
+    &-menu{
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &-links{
+            width: 60%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    }
+
+    &-login{
+        width: 20%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &-links{
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    }
+}
+
+
+
