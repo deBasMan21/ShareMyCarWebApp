@@ -2,7 +2,9 @@
     <div class="carlist-title">
         <span class="carlist-title-filler"></span>
         <h1>Jouw auto's</h1>
-        <span class="material-icons">add</span>
+        <a routerLink="/car/add">
+            <span class="material-icons">add</span>
+        </a>
     </div>
     <div class="carlist-list">
         <div class="carlist-list-item" *ngFor="let car of cars">

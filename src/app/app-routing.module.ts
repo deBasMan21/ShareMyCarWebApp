@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'user/:id/edit', pathMatch: 'full', component: UserEditComponent },
 
   { path: 'car', pathMatch: 'full', component: CarListComponent },
+  { path: 'car/add', pathMatch: 'full', component: CarEditComponent },
   { path: 'car/:id', pathMatch: 'full', component: CarDetailComponent },
   { path: 'car/:id/edit', pathMatch: 'full', component: CarEditComponent },
 
