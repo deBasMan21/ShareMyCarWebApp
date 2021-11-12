@@ -26,7 +26,43 @@
     }
 
     &-rides{
+        width: 100%;
+        
+        &-title{
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+            h2{
+                margin: 10px;
+            }
+        }
 
+        &-list{
+            width: 100%;
+            justify-content: start;
+            overflow-x: auto;
+            white-space: nowrap;
+
+            &-item{
+                width: 300px;
+                display: inline-flex;
+                flex-wrap: wrap;
+                padding: 10px;
+                background-color: #f0f0f0;
+                margin: 10px;
+                border-radius: 15px;
+
+                h3{
+                    width: 100%;
+                    text-align: center;
+                    margin: 0;
+                }
+                span{
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
     }
 
     &-addride{
@@ -36,5 +72,6 @@
         justify-content: center;
         text-align: center;
         font-weight: bolder;
+        margin: 50px;
     }
 }
