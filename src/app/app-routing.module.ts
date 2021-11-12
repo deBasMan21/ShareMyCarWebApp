@@ -26,10 +26,12 @@ const routes: Routes = [
   { path: 'car/:id/edit', pathMatch: 'full', component: CarEditComponent },
 
   { path: 'ride', pathMatch: 'full', component: RideListComponent },
+  { path: 'ride/add', pathMatch: 'full', component: RideEditComponent },
   { path: 'ride/:id', pathMatch: 'full', component: RideDetailComponent },
   { path: 'ride/:id/edit', pathMatch: 'full', component: RideEditComponent },
 
   { path: 'location', pathMatch: 'full', component: LocationListComponent },
+  { path: 'location/add', pathMatch: 'full', component: LocationEditComponent },
   { path: 'location/:id', pathMatch: 'full', component: LocationDetailComponent },
   { path: 'location/:id/edit', pathMatch: 'full', component: LocationEditComponent },
 ];

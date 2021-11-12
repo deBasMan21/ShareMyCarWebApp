@@ -24,4 +24,17 @@
             max-width: 100%;
         }
     }
+
+    &-rides{
+
+    }
+
+    &-addride{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        font-weight: bolder;
+    }
 }
