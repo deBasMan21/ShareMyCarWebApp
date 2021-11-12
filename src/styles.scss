@@ -25,10 +25,65 @@ body{
 .menulink:hover{
     color: grey;
     font-style: normal;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .menulink:active{
     color: white;
     font-style: normal;
     text-decoration: none;
+}
+
+.buttonStyleForAnchor{
+    border: none;
+    border-radius: 15px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    width: 40%;
+    margin: 20px;
+    box-shadow: 0px 0px 10px #AAA;
+    text-decoration: none;
+    color: black
+}
+
+.buttonStyleForAnchor:visited{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}
+
+.buttonStyleForAnchor:hover{
+    font-style: normal;
+    text-decoration: none;
+    color: grey
+}
+
+.buttonStyleForAnchor:active{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lightgray;
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
 }
