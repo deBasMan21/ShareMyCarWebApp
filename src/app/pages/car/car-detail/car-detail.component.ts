@@ -14,15 +14,15 @@ export class CarDetailComponent implements OnInit {
   public car: Car = { id: 1, name: 'Tesla model 3', plate: 'HX-803-F', imgSrc: 'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png' };
   public rides: Ride[] = [
     { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
-    { id: 1, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 2, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 3, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 4, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 5, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 6, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 7, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 8, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 9, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
+    { id: 10, name: "maccie", beginDateTime: new Date('12-11-2021 12:00'), endDateTime: new Date('12-11-2021 15:00') },
   ]
 
   constructor(public route: ActivatedRoute) { }
