@@ -1,89 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif; 
-    margin: 0;
-    height: 100%;
-    width: 100%;
+body {
+  font-family: Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
-.view{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.menulink{
-    color: white;
-    font-style: normal;
-    text-decoration: none;
+.menulink {
+  color: white;
+  font-style: normal;
+  text-decoration: none;
 }
-.menulink:visited{
-    color: white;
-    font-style: normal;
-    text-decoration: none;
+.menulink:visited {
+  color: white;
+  font-style: normal;
+  text-decoration: none;
 }
-.menulink:hover{
-    color: grey;
-    font-style: normal;
-    text-decoration: none;
+.menulink:hover {
+  color: grey;
+  font-style: normal;
+  text-decoration: none;
 }
-.menulink:active{
-    color: white;
-    font-style: normal;
-    text-decoration: none;
-}
-
-.buttonStyleForAnchor{
-    border: none;
-    border-radius: 15px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    width: 40%;
-    margin: 20px;
-    box-shadow: 0px 0px 10px #AAA;
-    text-decoration: none;
-    color: black
+.menulink:active {
+  color: white;
+  font-style: normal;
+  text-decoration: none;
 }
 
-.buttonStyleForAnchor:visited{
-    font-style: normal;
-    text-decoration: none;
-    color: black
+.buttonStyleForAnchor {
+  border: none;
+  border-radius: 15px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  width: 40%;
+  margin: 20px;
+  box-shadow: 0px 0px 10px #aaa;
+  text-decoration: none;
+  color: black;
 }
 
-.buttonStyleForAnchor:hover{
-    font-style: normal;
-    text-decoration: none;
-    color: grey
+.buttonStyleForAnchor:visited {
+  font-style: normal;
+  text-decoration: none;
+  color: black;
 }
 
-.buttonStyleForAnchor:active{
-    font-style: normal;
-    text-decoration: none;
-    color: black
+.buttonStyleForAnchor:hover {
+  font-style: normal;
+  text-decoration: none;
+  color: grey;
 }
 
+.buttonStyleForAnchor:active {
+  font-style: normal;
+  text-decoration: none;
+  color: black;
+}
 
-
-
-
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: white;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: lightgray;
   border-radius: 15px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: grey;
 }
