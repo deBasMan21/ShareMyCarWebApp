@@ -10,13 +10,13 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 })
 export class CarEditComponent implements OnInit {
   public id: number = 0;
-  public car: Car = { name: 'test', id: 0, imgSrc: '', plate: '' };
+  public car: Car = { name: 'test', id: 0, imgSrc: '', plate: '', rides: [] };
 
   constructor(
     public route: ActivatedRoute,
     private carService: CarServiceService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
