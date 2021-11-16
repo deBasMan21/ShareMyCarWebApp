@@ -45,4 +45,27 @@ export class CarServiceService {
   getCarById(id: number): Car | null {
     return this.cars.filter((car) => car.id == id)[0];
   }
+
+  updateCar(car: Car): boolean {
+    var oldCar: Car = this.cars.filter(
+      (currentCar) => currentCar.id === car.id
+    )[0];
+    let index: number = this.cars.indexOf(oldCar);
+    this.cars[index] = car;
+    return true;
+  }
+
+  deleteCar(carId: number): boolean {
+    var oldCar: Car = this.cars.filter(
+      (currentCar) => currentCar.id === carId
+    )[0];
+    let index: number = this.cars.indexOf(oldCar);
+    this.cars.splice(index);
+    return true;
+  }
+
+  addCar(car: Car): boolean {
+    this.cars.push(car);
+    return true;
+  }
 }
