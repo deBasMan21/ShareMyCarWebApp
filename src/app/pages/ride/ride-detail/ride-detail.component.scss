@@ -1,0 +1,80 @@
+.ridedetail {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+
+  &-title {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &-rideinfo {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: baseline;
+
+    &-begin {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+
+      span {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &-end {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      span {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  &-carinfo {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+      max-width: 50%;
+    }
+
+    h3 {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+
+    h4 {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  &-edit {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin: 50px;
+  }
+}
