@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Ride } from '../../ride/ride.model';
 import { Car } from '../car.model';
+import { CarServiceService } from 'src/app/services/car-service.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -9,15 +10,9 @@ import { Car } from '../car.model';
   styleUrls: ['./car-detail.component.scss'],
 })
 export class CarDetailComponent implements OnInit {
-  public id: number | null = null;
+  public id: number = 0;
 
-  public car: Car = {
-    id: 1,
-    name: 'Tesla model 3',
-    plate: 'HX-803-F',
-    imgSrc:
-      'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
-  };
+  public car: Car = { name: '', id: 0, imgSrc: '', plate: '' };
   public rides: Ride[] = [
     {
       id: 1,
@@ -81,11 +76,15 @@ export class CarDetailComponent implements OnInit {
     },
   ];
 
-  constructor(public route: ActivatedRoute) {}
+  constructor(
+    public route: ActivatedRoute,
+    private carService: CarServiceService
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe((params: any) => {
       this.id = params['id'];
+      this.car = this.carService.getCarById(this.id)!;
     });
   }
 }
