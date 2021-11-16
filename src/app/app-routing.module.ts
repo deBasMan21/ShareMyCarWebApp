@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './pages/about/about.component';
 import { CarDetailComponent } from './pages/car/car-detail/car-detail.component';
 import { CarEditComponent } from './pages/car/car-edit/car-edit.component';
 import { CarListComponent } from './pages/car/car-list/car-list.component';
@@ -15,6 +16,8 @@ import { UserListComponent } from './pages/user/user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'user' },
+
+  { path: 'about', pathMatch: 'full', component: AboutComponent },
 
   { path: 'user', pathMatch: 'full', component: UserListComponent },
   { path: 'user/:id', pathMatch: 'full', component: UserDetailComponent },
