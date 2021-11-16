@@ -3,7 +3,7 @@
     <h1>Wijzig auto</h1>
   </div>
   <div class="caredit-form">
-    <form>
+    <form (ngSubmit)="submit()">
       <div class="caredit-form-field">
         <label>Autonaam:</label>
         <input type="text" name="name" [(ngModel)]="car.name" />
