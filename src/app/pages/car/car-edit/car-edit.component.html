@@ -3,20 +3,20 @@
     <h1>Wijzig auto</h1>
   </div>
   <div class="caredit-form">
-    <form>
-      <div class="caredit-form-name">
+    <form (ngSubmit)="submit()">
+      <div class="caredit-form-field">
         <label>Autonaam:</label>
-        <input type="text" placeholder="name" />
+        <input type="text" name="name" [(ngModel)]="car.name" />
       </div>
-      <div class="caredit-form-plate">
+      <div class="caredit-form-field">
         <label>Kenteken:</label>
-        <input type="text" placeholder="plate" />
+        <input type="text" name="plate" [(ngModel)]="car.plate" />
       </div>
-      <div class="caredit-form-image">
+      <div class="caredit-form-field">
         <label>Afbeelding link:</label>
-        <input type="text" placeholder="image source" />
+        <input type="text" name="imgSrc" [(ngModel)]="car.imgSrc" />
       </div>
-      <div class="caredit-form-submit">
+      <div class="caredit-form-field">
         <input type="submit" placeholder="Wijzig auto" />
       </div>
     </form>

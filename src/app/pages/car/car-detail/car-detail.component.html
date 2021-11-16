@@ -13,11 +13,8 @@
       <h2>Ritten met deze auto</h2>
     </div>
     <div class="cardetail-rides-list">
-      <div class="cardetail-rides-list-item" *ngFor="let ride of rides">
-        <a
-          routerLink="/ride/{{ ride.id }}"
-          class="rideDetailButton cardetail-rides-list-item-link"
-        >
+      <div class="cardetail-rides-list-item" *ngFor="let ride of car.rides">
+        <a routerLink="/ride/{{ ride.id }}" class="rideDetailButton cardetail-rides-list-item-link">
           <h3>{{ ride.name }}</h3>
           <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
           <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
@@ -27,8 +24,6 @@
   </div>
   <div class="cardetail-addride">
     <a routerLink="/ride/add" class="buttonStyleForAnchor">Plan een rit</a>
-    <a routerLink="/car/{{ id }}/edit" class="buttonStyleForAnchor"
-      >Wijzig auto</a
-    >
+    <a routerLink="/car/{{ id }}/edit" class="buttonStyleForAnchor">Wijzig auto</a>
   </div>
 </div>

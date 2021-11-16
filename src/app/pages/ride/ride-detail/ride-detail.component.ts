@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ride } from '../ride.model';
 import { Car } from '../../car/car.model';
 import { ActivatedRoute } from '@angular/router';
+import { CarServiceService } from 'src/app/services/car-service.service';
 
 @Component({
   selector: 'app-ride-detail',
@@ -23,13 +24,16 @@ export class RideDetailComponent implements OnInit {
     plate: 'HX-803-F',
     imgSrc:
       'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
+    rides: []
   };
 
-  constructor(public route: ActivatedRoute) {}
+  constructor(public route: ActivatedRoute, private carService: CarServiceService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
+      this.ride = this.carService.getRideById(this.id);
+      this.car = this.carService.getCarForRide(this.id);
     });
   }
 
