@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ride } from '../ride.model';
 import { Car } from '../../car/car.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { CarServiceService } from 'src/app/services/car-service.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class RideDetailComponent implements OnInit {
     rides: []
   };
 
-  constructor(public route: ActivatedRoute, private carService: CarServiceService) { }
+  constructor(public route: ActivatedRoute, private carService: CarServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -38,6 +38,7 @@ export class RideDetailComponent implements OnInit {
   }
 
   deleteRide(): void {
-    console.log('delete ride');
+    this.carService.deleteRideFromCar(this.id);
+    this.router.navigate([`/car/${this.car.id}`]);
   }
 }

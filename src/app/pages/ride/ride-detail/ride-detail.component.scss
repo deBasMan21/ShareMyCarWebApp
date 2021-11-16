@@ -76,5 +76,9 @@
     justify-content: center;
     text-align: center;
     margin: 50px;
+
+    a:hover {
+      cursor: pointer;
+    }
   }
 }

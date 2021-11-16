@@ -116,12 +116,16 @@ export class CarServiceService {
   }
 
   updateCar(car: Car): boolean {
-    var oldCar: Car = this.cars.filter(
-      (currentCar) => currentCar.id === car.id
-    )[0];
-    let index: number = this.cars.indexOf(oldCar);
-    this.cars[index] = car;
-    return true;
+    if (car.id != 0) {
+      var oldCar: Car = this.cars.filter(
+        (currentCar) => currentCar.id === car.id
+      )[0];
+      let index: number = this.cars.indexOf(oldCar);
+      this.cars[index] = car;
+      return true;
+    } else {
+      return this.addCar(car);
+    }
   }
 
   deleteCar(carId: number): boolean {
@@ -134,6 +138,7 @@ export class CarServiceService {
   }
 
   addCar(car: Car): boolean {
+    car.id = this.cars[this.cars.length - 1].id + 1;
     this.cars.push(car);
     return true;
   }
@@ -162,5 +167,20 @@ export class CarServiceService {
     });
 
     return currentCar!;
+  }
+
+  deleteRideFromCar(id: number): boolean {
+    var rideIndex: number = 0;
+    var carIndex: number = 0;
+    this.cars.forEach(car => {
+      car.rides.forEach(ride => {
+        if (ride.id == id) {
+          rideIndex = car.rides.indexOf(ride);
+          carIndex = this.cars.indexOf(car);
+        }
+      });
+    });
+    this.cars[carIndex].rides.splice(rideIndex);
+    return true;
   }
 }

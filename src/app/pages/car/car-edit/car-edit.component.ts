@@ -10,7 +10,7 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 })
 export class CarEditComponent implements OnInit {
   public id: number = 0;
-  public car: Car = { name: 'test', id: 0, imgSrc: '', plate: '', rides: [] };
+  public car: Car = { name: '', id: 0, imgSrc: '', plate: '', rides: [] };
 
   constructor(
     public route: ActivatedRoute,
@@ -21,13 +21,18 @@ export class CarEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
-      this.car = this.carService.getCarById(this.id)!;
-      console.log(this.car);
+      if (this.id != undefined) {
+        this.car = this.carService.getCarById(this.id)!;
+      }
     });
   }
 
   submit(): void {
     this.carService.updateCar(this.car);
-    this.router.navigate([`/car/${this.id}`]);
+    if (this.id != undefined) {
+      this.router.navigate([`/car/${this.id}`]);
+    } else {
+      this.router.navigate([`/car`]);
+    }
   }
 }

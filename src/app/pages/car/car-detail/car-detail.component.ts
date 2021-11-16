@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ride } from '../../ride/ride.model';
 import { Car } from '../car.model';
 import { CarServiceService } from 'src/app/services/car-service.service';
@@ -16,7 +16,8 @@ export class CarDetailComponent implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
-    private carService: CarServiceService
+    private carService: CarServiceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,5 +25,10 @@ export class CarDetailComponent implements OnInit {
       this.id = params['id'];
       this.car = this.carService.getCarById(this.id)!;
     });
+  }
+
+  deleteCar(): void {
+    this.carService.deleteCar(this.id);
+    this.router.navigate(['car']);
   }
 }
