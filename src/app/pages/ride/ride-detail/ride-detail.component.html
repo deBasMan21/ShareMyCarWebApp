@@ -1,1 +1,28 @@
-<p>ride-detail works!</p>
+<div class="ridedetail">
+  <div class="ridedetail-title">
+    <h1>{{ ride.name }}</h1>
+  </div>
+  <div class="ridedetail-rideinfo">
+    <div class="ridedetail-rideinfo-begin">
+      <span>Begin:</span>
+      <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
+      <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
+    </div>
+    <div class="ridedetail-rideinfo-end">
+      <span>Eind:</span>
+      <span>{{ ride.endDateTime.toLocaleDateString() }}</span>
+      <span>{{ ride.endDateTime.toLocaleTimeString() }}</span>
+    </div>
+  </div>
+  <div class="ridedetail-carinfo">
+    <img src="{{ car.imgSrc }}" alt="" />
+    <h3>{{ car.name }}</h3>
+    <h4>{{ car.plate }}</h4>
+  </div>
+  <div class="ridedetail-edit">
+    <a routerLink="/ride/{{ id }}/edit" class="buttonStyleForAnchor">
+      Wijzig rit
+    </a>
+    <a (click)="deleteRide()" class="buttonStyleForAnchor">Verwijder rit</a>
+  </div>
+</div>

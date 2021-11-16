@@ -14,8 +14,10 @@
         </div>
         <div class="cardetail-rides-list">
             <div class="cardetail-rides-list-item" *ngFor="let ride of rides">
-                <h3>{{ride.name}}</h3>
-                <span>{{ride.beginDateTime.toLocaleString()}}</span>
+                <a routerLink="/ride/{{ride.id}}" class="rideDetailButton cardetail-rides-list-item-link">
+                    <h3>{{ride.name}}</h3>
+                    <span>{{ride.beginDateTime.toLocaleString()}}</span>
+                </a>
             </div>
         </div>
     </div>

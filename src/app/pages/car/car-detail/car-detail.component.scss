@@ -52,14 +52,19 @@
                 margin: 10px;
                 border-radius: 15px;
 
-                h3{
-                    width: 100%;
-                    text-align: center;
-                    margin: 0;
-                }
-                span{
-                    width: 100%;
-                    text-align: center;
+                &-link{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    h3{
+                        width: 100%;
+                        text-align: center;
+                        margin: 0;
+                    }
+                    span{
+                        width: 100%;
+                        text-align: center;
+                    }
                 }
             }
         }
@@ -74,4 +79,30 @@
         font-weight: bolder;
         margin: 50px;
     }
+}
+
+
+.rideDetailButton{
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    color: black
+}
+
+.rideDetailButton:visited{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}
+
+.rideDetailButton:hover{
+    font-style: normal;
+    text-decoration: none;
+    color: grey
+}
+
+.rideDetailButton:active{
+    font-style: normal;
+    text-decoration: none;
+    color: black
 }
