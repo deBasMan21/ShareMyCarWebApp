@@ -17,6 +17,7 @@ import { RideDetailComponent } from './pages/ride/ride-detail/ride-detail.compon
 import { LocationListComponent } from './pages/location/location-list/location-list.component';
 import { LocationDetailComponent } from './pages/location/location-detail/location-detail.component';
 import { LocationEditComponent } from './pages/location/location-edit/location-edit.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +36,10 @@ import { LocationEditComponent } from './pages/location/location-edit/location-e
     LocationListComponent,
     LocationDetailComponent,
     LocationEditComponent,
+    AboutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
