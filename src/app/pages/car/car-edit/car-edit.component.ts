@@ -9,8 +9,8 @@ import { CarServiceService } from 'src/app/services/car-service.service';
   styleUrls: ['./car-edit.component.scss'],
 })
 export class CarEditComponent implements OnInit {
-  public id: number = 0;
-  public car: Car = { name: '', id: 0, imgSrc: '', plate: '', rides: [] };
+  public id: string = '';
+  public car: Car = { name: '', _id: null, imageSrc: '', plate: '', rides: [] };
 
   constructor(
     public route: ActivatedRoute,
@@ -22,17 +22,19 @@ export class CarEditComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       if (this.id != undefined) {
-        this.car = this.carService.getCarById(this.id)!;
+        this.carService.getCarById(this.id).then((car) => { this.car = car });
       }
     });
   }
 
-  submit(): void {
-    this.carService.updateCar(this.car);
-    if (this.id != undefined) {
-      this.router.navigate([`/car/${this.id}`]);
-    } else {
-      this.router.navigate([`/car`]);
-    }
+  async submit(): Promise<void> {
+    await this.carService.updateCar(this.car).subscribe((car) => {
+      console.log(car);
+      if (this.id != undefined) {
+        this.router.navigate([`/car/${this.id}`]);
+      } else {
+        this.router.navigate([`/car`]);
+      }
+    });
   }
 }

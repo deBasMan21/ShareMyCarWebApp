@@ -9,8 +9,8 @@
     <div class="carlist-list">
         <div class="carlist-list-item" *ngFor="let car of cars">
             <div class="carlist-list-item-image">
-                <a routerLink="/car/{{car.id}}">
-                    <img src="{{car.imgSrc}}">
+                <a routerLink="/car/{{car._id}}">
+                    <img src="{{car.imageSrc}}">
                 </a>
             </div>
             <div class="carlist-list-item-info">

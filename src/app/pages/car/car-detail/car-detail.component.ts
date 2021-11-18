@@ -10,9 +10,9 @@ import { CarServiceService } from 'src/app/services/car-service.service';
   styleUrls: ['./car-detail.component.scss'],
 })
 export class CarDetailComponent implements OnInit {
-  public id: number = 0;
+  public id: string = '';
 
-  public car: Car = { name: '', id: 0, imgSrc: '', plate: '', rides: [] };
+  public car: Car = { name: '', _id: '1', imageSrc: '', plate: '', rides: [] };
 
   constructor(
     public route: ActivatedRoute,
@@ -23,12 +23,15 @@ export class CarDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
-      this.car = this.carService.getCarById(this.id)!;
+      this.carService.getCarById(this.id).then((car) => {
+        this.car = car;
+      });
     });
   }
 
   deleteCar(): void {
-    this.carService.deleteCar(this.id);
-    this.router.navigate(['car']);
+    this.carService.deleteCar(this.id).subscribe((car) => {
+      this.router.navigate(['car']);
+    });
   }
 }

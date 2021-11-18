@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Car } from '../pages/car/car.model';
 import { Ride } from '../pages/ride/ride.model';
 
@@ -6,141 +8,45 @@ import { Ride } from '../pages/ride/ride.model';
   providedIn: 'root',
 })
 export class CarServiceService {
-  cars: Car[] = [
-    {
-      id: 1,
-      name: 'Tesla model x',
-      plate: 'HX-803-F',
-      imgSrc:
-        'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
-      rides: [
-        {
-          id: 1,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        },
-        {
-          id: 2,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: 'Tesla model 3',
-      plate: 'HX-803-F',
-      imgSrc:
-        'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
-      rides: [
-        {
-          id: 3,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        },
-        {
-          id: 4,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: 'Tesla model 3',
-      plate: 'HX-803-F',
-      imgSrc:
-        'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
-      rides: [
-        {
-          id: 5,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        },
-        {
-          id: 6,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        },
-        {
-          id: 7,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        }
-      ]
-    },
-    {
-      id: 4,
-      name: 'Tesla model 3',
-      plate: 'HX-803-F',
-      imgSrc:
-        'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
-      rides: [
-        {
-          id: 8,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        },
-        {
-          id: 9,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        },
-        {
-          id: 10,
-          name: 'maccie',
-          beginDateTime: new Date(2021, 11, 12, 12),
-          endDateTime: new Date(2021, 11, 12, 14),
-        }
-      ]
-    },
-  ];
+  cars: Car[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAllCars(): Car[] {
-    return this.cars;
+  getAllCars(): Promise<Car[]> {
+    return fetch('https://sharemycar.herokuapp.com/api/car')
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res as Car[];
+      });
   }
 
-  getCarById(id: number): Car | null {
-    return this.cars.filter((car) => car.id == id)[0];
+  getCarById(id: String): Promise<Car> {
+    return fetch(`https://sharemycar.herokuapp.com/api/car/${id}`)
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res as Car;
+      })
   }
 
-  updateCar(car: Car): boolean {
-    if (car.id != 0) {
-      var oldCar: Car = this.cars.filter(
-        (currentCar) => currentCar.id === car.id
-      )[0];
-      let index: number = this.cars.indexOf(oldCar);
-      this.cars[index] = car;
-      return true;
+  updateCar(car: Car): Observable<Car> {
+    console.log(car);
+    if (car._id !== null) {
+      return this.http.put<Car>(`https://sharemycar.herokuapp.com/api/car/${car._id}`, car);
     } else {
       return this.addCar(car);
     }
   }
 
-  deleteCar(carId: number): boolean {
-    var oldCar: Car = this.cars.filter(
-      (currentCar) => currentCar.id === carId
-    )[0];
-    let index: number = this.cars.indexOf(oldCar);
-    this.cars.splice(index);
-    return true;
+  deleteCar(carId: String): Observable<Car> {
+    console.log("delete car");
+    return this.http.delete<Car>(`https://sharemycar.herokuapp.com/api/car/${carId}`);
   }
 
-  addCar(car: Car): boolean {
-    car.id = this.cars[this.cars.length - 1].id + 1;
-    this.cars.push(car);
-    return true;
+  addCar(car: Car): Observable<Car> {
+    console.log("add car");
+    return this.http.post<Car>(`https://sharemycar.herokuapp.com/api/car/`, car)
   }
 
   getRideById(id: number): Ride {

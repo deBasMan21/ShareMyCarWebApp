@@ -18,6 +18,7 @@ import { LocationListComponent } from './pages/location/location-list/location-l
 import { LocationDetailComponent } from './pages/location/location-detail/location-detail.component';
 import { LocationEditComponent } from './pages/location/location-edit/location-edit.component';
 import { AboutComponent } from './pages/about/about.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { AboutComponent } from './pages/about/about.component';
     LocationEditComponent,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -10,9 +10,9 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 export class CarListComponent implements OnInit {
   cars: Car[] = [];
 
-  constructor(private carService: CarServiceService) {}
+  constructor(private carService: CarServiceService) { }
 
   ngOnInit(): void {
-    this.cars = this.carService.getAllCars();
+    this.carService.getAllCars().then((cars) => this.cars = cars);
   }
 }

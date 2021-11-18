@@ -19,10 +19,10 @@ export class RideDetailComponent implements OnInit {
   };
 
   car: Car = {
-    id: 1,
+    _id: '1',
     name: 'Tesla model 3',
     plate: 'HX-803-F',
-    imgSrc:
+    imageSrc:
       'https://www.pngall.com/wp-content/uploads/7/White-Tesla-Electric-Car-PNG-Picture.png',
     rides: []
   };
@@ -39,6 +39,6 @@ export class RideDetailComponent implements OnInit {
 
   deleteRide(): void {
     this.carService.deleteRideFromCar(this.id);
-    this.router.navigate([`/car/${this.car.id}`]);
+    this.router.navigate([`/car/${this.car._id}`]);
   }
 }

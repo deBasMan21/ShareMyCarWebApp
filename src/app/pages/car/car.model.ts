@@ -2,10 +2,10 @@ import { Ride } from "../ride/ride.model";
 
 export class Car {
     constructor(
-        public id: number,
+        public _id: string | null,
         public name: string,
         public plate: string,
-        public imgSrc: string,
+        public imageSrc: string,
         public rides: Ride[]
     ) { }
 }
