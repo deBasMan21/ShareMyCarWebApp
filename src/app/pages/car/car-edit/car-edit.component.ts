@@ -10,7 +10,7 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 })
 export class CarEditComponent implements OnInit {
   public id: string = '';
-  public car: Car = { name: '', _id: null, imageSrc: '', plate: '', rides: [] };
+  public car: Car = { name: '', _id: null, imageSrc: '', plate: '', reservations: [] };
 
   constructor(
     public route: ActivatedRoute,

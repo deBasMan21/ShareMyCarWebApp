@@ -1,10 +1,14 @@
-import { Time } from '@angular/common';
+import { User } from "../user/user.model";
+import { Location } from "../location/location.model";
 
 export class Ride {
   constructor(
-    public id: number,
+    public _id: string,
     public name: string,
     public beginDateTime: Date,
-    public endDateTime: Date
-  ) {}
+    public endDateTime: Date,
+    public destination: Location,
+    public reservationDateTime: Date,
+    public user: User | null
+  ) { }
 }
