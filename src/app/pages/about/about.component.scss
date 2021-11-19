@@ -25,13 +25,26 @@
 
         &-info{
             width: 50%;
-        }
+            span{
+                padding-right: 30px;
 
+            }
+        }
+        
         &-image{
+            width: 50%;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            width: 50%;
+            &-container{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                img{
+                    max-width: 80%;
+                    max-height: 80%;
+                }
+            }
         }
     }
 }

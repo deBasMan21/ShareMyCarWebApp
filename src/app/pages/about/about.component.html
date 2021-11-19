@@ -20,12 +20,25 @@
             <h3>About the data</h3>
         </div>
         <div class="about-data-info">
-            <span>Aan de rechterkant zie je het ERD van het ShareMyCar project. Er wordt gebruik gemaakt van 4
+            <span>Onder deze tekst zie je het ERD van het ShareMyCar project. Er wordt gebruik gemaakt van 4
                 entiteiten. Deze hebben allemaal relaties met elkaar. De uitvoering van de relatie is verduidelijkt door
                 de tekst die bij de lijn staat.</span>
+            <br>
+            <br>
+            <span>Aan de rechterkant van deze tekst zie je een document. Je ziet hier de Car entity. Deze heeft een
+                lijst met referenties naar de Ride entiteit. Dit is de lijst met de naam reservations.
+                Deze Ride heeft een destination. De destination is de Location entity. Deze is embedded in Ride.
+                Ook heeft de Ride een User reference. Deze staat nog op null omdat de users nog niet bestaan in mijn
+                api. Een user heeft op zichzelf een lijst met referenties naar Car. Deze zijn nog niet zichtbaar omdat
+                de user nog niet geimplementeerd is.</span>
+            <br>
+            <br>
+            <img src="https://buijsen.net/sharemycar/smc-erd.png">
         </div>
         <div class="about-data-image">
-            <img src="https://buijsen.net/sharemycar/smc-erd.png">
+            <div class="about-data-image-container">
+                <img src="https://buijsen.net/sharemycar/smc-ontwerp.png">
+            </div>
         </div>
     </div>
 </div>
