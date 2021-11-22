@@ -1,4 +1,3 @@
-import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarServiceService } from 'src/app/services/car-service.service';
@@ -20,7 +19,6 @@ export class RideEditComponent implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
-    private carService: CarServiceService,
     private rideService: RideService,
     private router: Router
   ) { }
@@ -41,6 +39,8 @@ export class RideEditComponent implements OnInit {
   }
 
   async submit(): Promise<void> {
+    console.log(this.ride);
+    console.log(this.id);
     this.ride.beginDateTime = new Date(this.beginDateTimeString);
     this.ride.endDateTime = new Date(this.endDateTimeString);
     if (this.id != undefined) {
@@ -49,6 +49,7 @@ export class RideEditComponent implements OnInit {
       })
     } else {
       this.rideService.addRide(this.ride, this.carId).subscribe((ride) => {
+        console.log(ride);
         this.router.navigate([`/car/${this.carId}`]);
       });
     }
