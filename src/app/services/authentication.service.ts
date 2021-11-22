@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from '../pages/user/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +48,9 @@ export class AuthenticationService {
     } else {
       return null;
     }
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>('https://sharemycar.herokuapp.com/api/user');
   }
 }

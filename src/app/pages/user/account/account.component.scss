@@ -1,0 +1,67 @@
+.account{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-title{
+        width: 100%;
+        text-align: center;
+    }
+
+    &-info{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h3{
+            margin: 5px;
+            width: 100%;
+            text-align: center;
+            font-weight: normal;
+        }
+    }
+
+    &-actions{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        button{
+            width: 40%;
+            margin-top: 50px;
+
+            h3{
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+.rideDetailButton{
+    font-weight: bolder;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    color: black
+}
+
+.rideDetailButton:visited{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}
+
+.rideDetailButton:hover{
+    font-style: normal;
+    text-decoration: none;
+    color: grey
+}
+
+.rideDetailButton:active{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}
