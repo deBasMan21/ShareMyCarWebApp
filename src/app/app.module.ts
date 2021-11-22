@@ -14,9 +14,6 @@ import { CarDetailComponent } from './pages/car/car-detail/car-detail.component'
 import { RideListComponent } from './pages/ride/ride-list/ride-list.component';
 import { RideEditComponent } from './pages/ride/ride-edit/ride-edit.component';
 import { RideDetailComponent } from './pages/ride/ride-detail/ride-detail.component';
-import { LocationListComponent } from './pages/location/location-list/location-list.component';
-import { LocationDetailComponent } from './pages/location/location-detail/location-detail.component';
-import { LocationEditComponent } from './pages/location/location-edit/location-edit.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,9 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
     RideListComponent,
     RideEditComponent,
     RideDetailComponent,
-    LocationListComponent,
-    LocationDetailComponent,
-    LocationEditComponent,
     AboutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],

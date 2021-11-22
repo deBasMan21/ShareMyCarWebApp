@@ -69,6 +69,32 @@
     }
   }
 
+  &-location{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &-info{
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      span{
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &-map{
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &-edit {
     width: 100%;
     display: flex;

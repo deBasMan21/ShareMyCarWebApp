@@ -32,7 +32,11 @@
             width: 60%;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
+
+            a{
+                margin-inline: 30px;
+            }
         }
     }
 

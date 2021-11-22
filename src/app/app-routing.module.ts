@@ -4,9 +4,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { CarDetailComponent } from './pages/car/car-detail/car-detail.component';
 import { CarEditComponent } from './pages/car/car-edit/car-edit.component';
 import { CarListComponent } from './pages/car/car-list/car-list.component';
-import { LocationDetailComponent } from './pages/location/location-detail/location-detail.component';
-import { LocationEditComponent } from './pages/location/location-edit/location-edit.component';
-import { LocationListComponent } from './pages/location/location-list/location-list.component';
 import { RideDetailComponent } from './pages/ride/ride-detail/ride-detail.component';
 import { RideEditComponent } from './pages/ride/ride-edit/ride-edit.component';
 import { RideListComponent } from './pages/ride/ride-list/ride-list.component';
@@ -32,11 +29,6 @@ const routes: Routes = [
   { path: 'car/:carId/ride/add', pathMatch: 'full', component: RideEditComponent },
   { path: 'ride/:id', pathMatch: 'full', component: RideDetailComponent },
   { path: 'ride/:id/edit', pathMatch: 'full', component: RideEditComponent },
-
-  { path: 'location', pathMatch: 'full', component: LocationListComponent },
-  { path: 'location/add', pathMatch: 'full', component: LocationEditComponent },
-  { path: 'location/:id', pathMatch: 'full', component: LocationDetailComponent },
-  { path: 'location/:id/edit', pathMatch: 'full', component: LocationEditComponent },
 ];
 
 @NgModule({

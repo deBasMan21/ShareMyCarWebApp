@@ -39,18 +39,20 @@ export class RideEditComponent implements OnInit {
   }
 
   async submit(): Promise<void> {
-    console.log(this.ride);
-    console.log(this.id);
+    //date from input field parsed to date objects
     this.ride.beginDateTime = new Date(this.beginDateTimeString);
     this.ride.endDateTime = new Date(this.endDateTimeString);
+
+    //see if ride is new or updating
     if (this.id != undefined) {
+      //updates ride
       this.rideService.updateRide(this.ride, this.id).subscribe((ride) => {
         this.router.navigate([`/ride/${ride._id}`]);
       })
     } else {
+      //creates ride
       this.rideService.addRide(this.ride, this.carId).subscribe((ride) => {
-        console.log(ride);
-        this.router.navigate([`/car/${this.carId}`]);
+        this.router.navigate([`/ride/${ride._id}`]);
       });
     }
   }
