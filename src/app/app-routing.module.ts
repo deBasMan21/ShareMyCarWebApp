@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'car/:id/edit', pathMatch: 'full', component: CarEditComponent },
 
   { path: 'ride', pathMatch: 'full', component: RideListComponent },
-  { path: 'ride/add', pathMatch: 'full', component: RideEditComponent },
+  { path: 'car/:carId/ride/add', pathMatch: 'full', component: RideEditComponent },
   { path: 'ride/:id', pathMatch: 'full', component: RideDetailComponent },
   { path: 'ride/:id/edit', pathMatch: 'full', component: RideEditComponent },
 

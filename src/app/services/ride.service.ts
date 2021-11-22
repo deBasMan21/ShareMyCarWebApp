@@ -19,4 +19,12 @@ export class RideService {
   deleteRideFromCar(rideId: String, carId: String): Observable<Ride> {
     return this.http.delete<Ride>(`https://sharemycar.herokuapp.com/api/car/${carId}/ride/${rideId}`);
   }
+
+  addRide(ride: Ride, carId: String): Observable<Ride> {
+    return this.http.post<Ride>(`https://sharemycar.herokuapp.com/api/car/${carId}/ride`, ride);
+  }
+
+  updateRide(ride: Ride, rideId: String): Observable<Ride> {
+    return this.http.put<Ride>(`https://sharemycar.herokuapp.com/api/ride/${rideId}`, ride);
+  }
 }
