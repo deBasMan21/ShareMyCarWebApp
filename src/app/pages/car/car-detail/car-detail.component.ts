@@ -24,7 +24,7 @@ export class CarDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
-      this.carService.getCarById(this.id).then((car) => {
+      this.carService.getCarById(this.id).subscribe((car) => {
         this.car = car as Car;
         var tempCars: Ride[] = [];
         car.reservations.forEach((item) => {

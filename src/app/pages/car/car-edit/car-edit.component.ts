@@ -22,7 +22,7 @@ export class CarEditComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       if (this.id != undefined) {
-        this.carService.getCarById(this.id).then((car) => { this.car = car });
+        this.carService.getCarById(this.id).subscribe((car) => { this.car = car });
       }
     });
   }

@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './pages/user/user-list/user-list.component';
-import { UserDetailComponent } from './pages/user/user-detail/user-detail.component';
-import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CarListComponent } from './pages/car/car-list/car-list.component';
@@ -15,15 +12,19 @@ import { RideListComponent } from './pages/ride/ride-list/ride-list.component';
 import { RideEditComponent } from './pages/ride/ride-edit/ride-edit.component';
 import { RideDetailComponent } from './pages/ride/ride-detail/ride-detail.component';
 import { AboutComponent } from './pages/about/about.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SafePipe } from './pages/ride/ride-detail/safe.pipe';
+import { LoginComponent } from './pages/user/login/login.component';
+import { RegisterComponent } from './pages/user/register/register.component';
+import { AccountComponent } from './pages/user/account/account.component';
+import { CarServiceService } from './services/car-service.service';
+import { RideService } from './services/ride.service';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
-    UserDetailComponent,
-    UserEditComponent,
     NavComponent,
     FooterComponent,
     CarListComponent,
@@ -33,10 +34,14 @@ import { SafePipe } from './pages/ride/ride-detail/safe.pipe';
     RideEditComponent,
     RideDetailComponent,
     AboutComponent,
-    SafePipe
+    SafePipe,
+    LoginComponent,
+    RegisterComponent,
+    AccountComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, SkipSelf } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../pages/car/car.model';
 import { Ride } from '../pages/ride/ride.model';
@@ -12,22 +12,12 @@ export class CarServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCars(): Promise<Car[]> {
-    return fetch('https://sharemycar.herokuapp.com/api/car')
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-        return res as Car[];
-      });
+  getAllCars(): Observable<Car[]> {
+    return this.http.get<Car[]>('https://sharemycar.herokuapp.com/api/car');
   }
 
-  getCarById(id: String): Promise<Car> {
-    return fetch(`https://sharemycar.herokuapp.com/api/car/${id}`)
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-        return res as Car;
-      })
+  getCarById(id: String): Observable<Car> {
+    return this.http.get<Car>(`https://sharemycar.herokuapp.com/api/car/${id}`);
   }
 
   updateCar(car: Car): Observable<Car> {

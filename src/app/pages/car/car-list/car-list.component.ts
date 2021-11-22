@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../car.model';
 import { CarServiceService } from 'src/app/services/car-service.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-car-list',
@@ -10,9 +11,10 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 export class CarListComponent implements OnInit {
   cars: Car[] = [];
 
-  constructor(private carService: CarServiceService) { }
+  constructor(private carService: CarServiceService, private authserv: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.carService.getAllCars().then((cars) => this.cars = cars);
+    this.carService.getAllCars().subscribe((cars) => this.cars = cars);
+    console.log(this.authserv.isLoggedIn())
   }
 }
