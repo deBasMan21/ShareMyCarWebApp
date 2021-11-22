@@ -11,24 +11,26 @@ import { AccountComponent } from './pages/user/account/account.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 
+import { AuthorizedGuard } from './authorized.guard';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'car' },
 
   { path: 'about', pathMatch: 'full', component: AboutComponent },
 
-  { path: 'car', pathMatch: 'full', component: CarListComponent },
-  { path: 'car/add', pathMatch: 'full', component: CarEditComponent },
-  { path: 'car/:id', pathMatch: 'full', component: CarDetailComponent },
-  { path: 'car/:id/edit', pathMatch: 'full', component: CarEditComponent },
+  { path: 'car', pathMatch: 'full', component: CarListComponent, canActivate: [AuthorizedGuard] },
+  { path: 'car/add', pathMatch: 'full', component: CarEditComponent, canActivate: [AuthorizedGuard] },
+  { path: 'car/:id', pathMatch: 'full', component: CarDetailComponent, canActivate: [AuthorizedGuard] },
+  { path: 'car/:id/edit', pathMatch: 'full', component: CarEditComponent, canActivate: [AuthorizedGuard] },
 
-  { path: 'ride', pathMatch: 'full', component: RideListComponent },
-  { path: 'car/:carId/ride/add', pathMatch: 'full', component: RideEditComponent },
-  { path: 'ride/:id', pathMatch: 'full', component: RideDetailComponent },
-  { path: 'ride/:id/edit', pathMatch: 'full', component: RideEditComponent },
+  { path: 'ride', pathMatch: 'full', component: RideListComponent, canActivate: [AuthorizedGuard] },
+  { path: 'car/:carId/ride/add', pathMatch: 'full', component: RideEditComponent, canActivate: [AuthorizedGuard] },
+  { path: 'ride/:id', pathMatch: 'full', component: RideDetailComponent, canActivate: [AuthorizedGuard] },
+  { path: 'ride/:id/edit', pathMatch: 'full', component: RideEditComponent, canActivate: [AuthorizedGuard] },
 
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'register', pathMatch: 'full', component: RegisterComponent },
-  { path: 'account', pathMatch: 'full', component: AccountComponent }
+  { path: 'account', pathMatch: 'full', component: AccountComponent, canActivate: [AuthorizedGuard] }
 ];
 
 @NgModule({

@@ -13,7 +13,8 @@
     <div class="navbar-login">
         <div class="navbar-login-links">
             <a routerLink="/about" class="menulink">About</a>
-            <a class="menulink">Log in</a>
+            <a *ngIf="isLoggedIn() == false" routerLink="/login" class="menulink">Log in</a>
+            <a *ngIf="isLoggedIn() == true" routerLink="/account" class="menulink">Account</a>
         </div>
     </div>
 </div>

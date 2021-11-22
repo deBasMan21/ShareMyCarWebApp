@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as moment from "moment";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(email: String, password: String) {
     this.http.post<any>('https://sharemycar.herokuapp.com/api/login', { email: email, password: password }).subscribe((res) => {
       console.log(res);
       this.setSession(res);
+      this.router.navigate(['/car']);
     });
   }
 

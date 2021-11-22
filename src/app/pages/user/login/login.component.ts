@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -7,16 +8,20 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  email: String = '';
+  password: String = '';
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit(): void {
     if (this.authenticationService.isLoggedIn()) {
-      console.log('already logged in');
-    } else {
-      console.log('niewe inlog')
-      this.authenticationService.login('bbuijsen@gmail.com', 'aaa');
+      this.router.navigate(['/car']);
     }
+  }
+
+  submit(): void {
+    this.authenticationService.login(this.email, this.password);
   }
 
 }
