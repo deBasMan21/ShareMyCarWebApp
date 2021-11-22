@@ -16,6 +16,7 @@ import { RideEditComponent } from './pages/ride/ride-edit/ride-edit.component';
 import { RideDetailComponent } from './pages/ride/ride-detail/ride-detail.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SafePipe } from './pages/ride/ride-detail/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     RideEditComponent,
     RideDetailComponent,
     AboutComponent,
+    SafePipe
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

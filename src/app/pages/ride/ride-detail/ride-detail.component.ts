@@ -23,6 +23,14 @@ export class RideDetailComponent implements OnInit {
     user: null
   };
 
+  positionMap = {
+    street: "",
+    num: "",
+    city: ""
+  };
+
+  mapsURL = '';
+
   car: Car = {
     _id: '',
     name: '',
@@ -42,9 +50,8 @@ export class RideDetailComponent implements OnInit {
       });
       this.rideService.getRideById(this.id).subscribe((res) => {
         this.ride = res as Ride;
-        this.ride.beginDateTime = new Date(res.beginDateTime);
-        this.ride.endDateTime = new Date(res.endDateTime);
-        this.ride.reservationDateTime = new Date(res.reservationDateTime);
+        this.createDates(res);
+        this.generateMapsUrl();
       });
     });
   }
@@ -53,5 +60,22 @@ export class RideDetailComponent implements OnInit {
     this.rideService.deleteRideFromCar(this.id, this.car._id!).subscribe((res) => {
       this.router.navigate([`/car/${this.car._id}`]);
     });
+  }
+
+  generateMapsUrl() {
+    this.positionMap.city = this.ride.destination.city;
+    this.positionMap.street = this.ride.destination.address;
+    let firstDigit: any = this.ride.destination.address.match(/\d/);
+    let index: number = this.ride.destination.address.indexOf(firstDigit);
+    this.positionMap.num = this.ride.destination.address.substring(index, this.ride.destination.address.length);
+    this.positionMap.street = this.ride.destination.address.substring(0, index).trim();
+
+    this.mapsURL = `https://maps.google.com/maps?q=${this.positionMap.street}%20${this.positionMap.num}%20%${this.positionMap.city}&t=&z=20&ie=UTF8&iwloc=&output=embed`;
+  }
+
+  createDates(res: any) {
+    this.ride.beginDateTime = new Date(res.beginDateTime);
+    this.ride.endDateTime = new Date(res.endDateTime);
+    this.ride.reservationDateTime = new Date(res.reservationDateTime);
   }
 }

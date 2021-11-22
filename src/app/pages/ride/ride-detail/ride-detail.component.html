@@ -14,21 +14,22 @@
       <span>{{ ride.endDateTime.toLocaleTimeString() }}</span>
     </div>
   </div>
+  <div class="ridedetail-location">
+    <span><strong>Bestemming:</strong></span>
+    <span>{{ride.destination.name}}</span>
+    <span>{{ride.destination.address}}</span>
+    <span>{{ride.destination.zipCode}} {{ride.destination.city}}</span>
+
+  </div>
   <div class="ridedetail-carinfo">
     <img src="{{ car.imageSrc }}" alt="" />
     <h3>{{ car.name }}</h3>
     <h4>{{ car.plate }}</h4>
   </div>
-  <div class="ridedetail-location">
-    <div class="ridedetail-location-info">
-      <span><strong>Bestemming:</strong></span>
-      <span>{{ride.destination.name}}</span>
-      <span>{{ride.destination.address}}</span>
-      <span>{{ride.destination.zipCode}} {{ride.destination.city}}</span>
-    </div>
-    <div class="ridedetail-location-map">
-
-    </div>
+  <div class="ridedetail-map">
+    <iframe *ngIf="mapsURL.length > 80" [src]='mapsURL | safe' width="75%" height="315" frameborder="0" allowfullscreen
+      webkitallowfullscreen mozallowfullscreen>
+    </iframe>
   </div>
   <div class="ridedetail-edit">
     <a routerLink="/ride/{{ id }}/edit" class="buttonStyleForAnchor">

@@ -1,8 +1,8 @@
 export class Location {
     constructor(
-        public name: String,
-        public address: String,
-        public zipCode: String,
-        public city: String
+        public name: string,
+        public address: string,
+        public zipCode: string,
+        public city: string
     ) { }
 }

@@ -46,14 +46,29 @@
     }
   }
 
+  &-location{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: baseline;
+
+    span{
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   &-carinfo {
     width: 50%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
 
     img {
-      max-width: 50%;
+      max-width: 70%;
+      height: fit-content;
     }
 
     h3 {
@@ -69,30 +84,14 @@
     }
   }
 
-  &-location{
-    width: 100%;
+  &-map{
+    margin-top: 50px;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
-
-    &-info{
-      width: 50%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      span{
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    &-map{
-      width: 50%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
+    justify-content: center;
+    align-items: center;
+    
   }
 
   &-edit {
