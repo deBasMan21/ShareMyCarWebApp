@@ -4,22 +4,29 @@
   </div>
   <div class="ridedetail-rideinfo">
     <div class="ridedetail-rideinfo-begin">
+      <span><strong>Gebruiker:</strong></span>
+      <span>{{ride.user.name}}</span>
+      <span>{{ride.user.email}}</span>
+      <span>{{ride.user.phoneNumber}}</span>
+    </div>
+    <div class="ridedetail-rideinfo-end">
       <span><strong>Begin:</strong></span>
       <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
       <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
     </div>
-    <div class="ridedetail-rideinfo-end">
+  </div>
+  <div class="ridedetail-location">
+    <div class="ridedetail-location-info">
+      <span><strong>Bestemming:</strong></span>
+      <span>{{ride.destination.name}}</span>
+      <span>{{ride.destination.address}}</span>
+      <span>{{ride.destination.zipCode}} {{ride.destination.city}}</span>
+    </div>
+    <div class="ridedetail-location-user">
       <span><strong>Eind:</strong></span>
       <span>{{ ride.endDateTime.toLocaleDateString() }}</span>
       <span>{{ ride.endDateTime.toLocaleTimeString() }}</span>
     </div>
-  </div>
-  <div class="ridedetail-location">
-    <span><strong>Bestemming:</strong></span>
-    <span>{{ride.destination.name}}</span>
-    <span>{{ride.destination.address}}</span>
-    <span>{{ride.destination.zipCode}} {{ride.destination.city}}</span>
-
   </div>
   <div class="ridedetail-carinfo">
     <img src="{{ car.imageSrc }}" alt="" />

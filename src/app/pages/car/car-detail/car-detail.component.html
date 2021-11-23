@@ -16,6 +16,7 @@
       <div class="cardetail-rides-list-item" *ngFor="let ride of car.reservations">
         <a routerLink="/ride/{{ ride._id }}" class="rideDetailButton cardetail-rides-list-item-link">
           <h3>{{ ride.name }}</h3>
+          <span>{{ ride.user.name }}</span>
           <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
           <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
         </a>

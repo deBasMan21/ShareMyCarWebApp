@@ -53,4 +53,11 @@ export class AuthenticationService {
   getUser(): Observable<User> {
     return this.http.get<User>('https://sharemycar.herokuapp.com/api/user');
   }
+
+  register(user: any) {
+    return this.http.post<any>('https://sharemycar.herokuapp.com/api/register', user).subscribe((res) => {
+      this.setSession(res);
+      this.router.navigate(['/car']);
+    });
+  }
 }

@@ -27,4 +27,8 @@ export class RideService {
   updateRide(ride: Ride, rideId: String): Observable<Ride> {
     return this.http.put<Ride>(`https://sharemycar.herokuapp.com/api/ride/${rideId}`, ride);
   }
+
+  getRidesForUser(): Observable<Ride[]> {
+    return this.http.get<Ride[]>('https://sharemycar.herokuapp.com/api/ride');
+  }
 }

@@ -1,0 +1,124 @@
+.ridelist{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-title{
+        width: 100%;
+        text-align: center;
+    }
+
+    &-list{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &-item{
+            width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            margin: 10px;
+            border-radius: 15px;
+
+            &-link{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                &-title{
+                    width: 100%;
+                    text-align: center;
+                    
+                    h3{
+                        margin: 0;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                &-time{
+                    width: 50%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    &-begin{
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+
+                        span{
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+
+                    &-end{
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        margin-top: 10px;
+
+                        span{
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+                }
+
+                &-location{
+                    width: 50%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    &-container{
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-content: baseline;
+
+                        span{
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.rideDetailButton{
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    color: black
+}
+
+.rideDetailButton:visited{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}
+
+.rideDetailButton:hover{
+    font-style: normal;
+    text-decoration: none;
+    color: grey
+}
+
+.rideDetailButton:active{
+    font-style: normal;
+    text-decoration: none;
+    color: black
+}

@@ -9,6 +9,6 @@ export class Ride {
     public endDateTime: Date,
     public destination: Location,
     public reservationDateTime: Date,
-    public user: User | null
+    public user: User
   ) { }
 }

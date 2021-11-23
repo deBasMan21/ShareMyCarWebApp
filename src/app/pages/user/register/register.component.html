@@ -1,1 +1,24 @@
-<p>register works!</p>
+<div class="register">
+    <div class="register-title">
+        <h1>Registreer</h1>
+    </div>
+    <div class="register-form">
+        <form (submit)="submit()">
+            <div class="register-form-field">
+                <label>Naam:</label>
+                <input type="text" name="name" [(ngModel)]="user.name">
+            </div>
+            <div class="register-form-field">
+                <label>Email:</label>
+                <input type="text" name="email" [(ngModel)]="user.email">
+            </div>
+            <div class="register-form-field">
+                <label>Telefoonnummer:</label>
+                <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber">
+            </div>
+            <div class="register-form-field">
+                <input type="submit" class="rideDetailButton">
+            </div>
+        </form>
+    </div>
+</div>

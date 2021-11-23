@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarServiceService } from 'src/app/services/car-service.service';
 import { RideService } from 'src/app/services/ride.service';
 import { Location } from '../../location/location.model';
+import { User } from '../../user/user.model';
 import { Ride } from '../ride.model';
 
 @Component({
@@ -15,7 +16,7 @@ export class RideEditComponent implements OnInit {
   public carId: String = '';
   public beginDateTimeString = '';
   public endDateTimeString = '';
-  public ride: Ride = { _id: '', name: '', beginDateTime: new Date(), endDateTime: new Date(), destination: new Location('', '', '', ''), user: null, reservationDateTime: new Date() };
+  public ride: Ride = { _id: '', name: '', beginDateTime: new Date(), endDateTime: new Date(), destination: new Location('', '', '', ''), user: new User('', '', '', []), reservationDateTime: new Date() };
 
   constructor(
     public route: ActivatedRoute,

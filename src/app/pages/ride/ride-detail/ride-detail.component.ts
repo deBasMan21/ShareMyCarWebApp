@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { CarServiceService } from 'src/app/services/car-service.service';
 import { Location } from '../../location/location.model';
 import { RideService } from 'src/app/services/ride.service';
+import { User } from '../../user/user.model';
 
 @Component({
   selector: 'app-ride-detail',
@@ -20,7 +21,7 @@ export class RideDetailComponent implements OnInit {
     endDateTime: new Date(2021, 11, 11, 14),
     destination: new Location('', '', '', ''),
     reservationDateTime: new Date(2021, 12, 11, 12),
-    user: null
+    user: new User('', '', '', [])
   };
 
   positionMap = {
