@@ -35,7 +35,6 @@ export class CarDetailComponent implements OnInit {
         });
         this.car.reservations = tempCars;
         this.showRides = this.car.reservations.length > 0;
-        console.log(car.isOwner);
       });
     });
   }

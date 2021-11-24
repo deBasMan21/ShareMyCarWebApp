@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CarServiceService } from 'src/app/services/car-service.service';
 import { RideService } from 'src/app/services/ride.service';
 import { Location } from '../../location/location.model';
@@ -12,6 +13,7 @@ import { Ride } from '../ride.model';
   styleUrls: ['./ride-edit.component.scss']
 })
 export class RideEditComponent implements OnInit {
+  public isOwner: boolean = false;
   public id: String = '';
   public carId: String = '';
   public beginDateTimeString = '';
@@ -21,7 +23,8 @@ export class RideEditComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private rideService: RideService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +36,11 @@ export class RideEditComponent implements OnInit {
           this.ride = ride;
           this.beginDateTimeString = ride.beginDateTime.toLocaleString().replace('Z', '');
           this.endDateTimeString = ride.endDateTime.toLocaleString().replace('Z', '');
-          console.log(ride);
+          this.authService.getUser().subscribe((user) => {
+            if (this.ride.user.email == user.email) {
+              this.isOwner = true;
+            }
+          });
         });
       }
     });

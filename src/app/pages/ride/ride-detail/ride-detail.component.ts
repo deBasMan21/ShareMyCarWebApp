@@ -6,6 +6,7 @@ import { CarServiceService } from 'src/app/services/car-service.service';
 import { Location } from '../../location/location.model';
 import { RideService } from 'src/app/services/ride.service';
 import { User } from '../../user/user.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-ride-detail',
@@ -13,6 +14,7 @@ import { User } from '../../user/user.model';
   styleUrls: ['./ride-detail.component.scss'],
 })
 export class RideDetailComponent implements OnInit {
+  isOwner: boolean = false;
   id: String = '';
   ride: Ride = {
     _id: '',
@@ -42,7 +44,7 @@ export class RideDetailComponent implements OnInit {
     isOwner: null
   };
 
-  constructor(public route: ActivatedRoute, private carService: CarServiceService, private rideService: RideService, private router: Router) { }
+  constructor(public route: ActivatedRoute, private carService: CarServiceService, private rideService: RideService, private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -54,6 +56,11 @@ export class RideDetailComponent implements OnInit {
         this.ride = res as Ride;
         this.createDates(res);
         this.generateMapsUrl();
+        this.authService.getUser().subscribe((user) => {
+          if (this.ride.user.email == user.email) {
+            this.isOwner = true;
+          }
+        });
       });
     });
   }

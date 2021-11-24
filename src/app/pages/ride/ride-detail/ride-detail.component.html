@@ -38,7 +38,7 @@
       webkitallowfullscreen mozallowfullscreen>
     </iframe>
   </div>
-  <div class="ridedetail-edit">
+  <div class="ridedetail-edit" *ngIf="isOwner">
     <a routerLink="/ride/{{ id }}/edit" class="buttonStyleForAnchor">
       Wijzig rit
     </a>

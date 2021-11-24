@@ -2,7 +2,7 @@
     <div class="rideedit-title">
         <h1>Wijzig rit</h1>
     </div>
-    <div class="rideedit-form">
+    <div class="rideedit-form" *ngIf="isOwner">
         <form (ngSubmit)="submit()">
             <h2>Rit:</h2>
             <div class="rideedit-form-field">
