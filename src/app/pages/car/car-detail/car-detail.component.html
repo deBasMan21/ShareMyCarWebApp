@@ -25,7 +25,7 @@
   </div>
   <div class="cardetail-addride">
     <a routerLink="/car/{{ id }}/ride/add" class="buttonStyleForAnchor">Plan een rit</a>
-    <a routerLink="/car/{{ id }}/edit" class="buttonStyleForAnchor">Wijzig auto</a>
-    <a (click)="deleteCar()" class="buttonStyleForAnchor">Verwijder auto</a>
+    <a *ngIf="car.isOwner" routerLink="/car/{{ id }}/edit" class="buttonStyleForAnchor">Wijzig auto</a>
+    <a *ngIf="car.isOwner" (click)="deleteCar()" class="buttonStyleForAnchor">Verwijder auto</a>
   </div>
 </div>

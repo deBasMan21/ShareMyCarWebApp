@@ -21,4 +21,22 @@
             </div>
         </div>
     </div>
+    <div class="carlist-title">
+        <h1>Auto's van je vrienden:</h1>
+    </div>
+    <div class="carlist-list">
+        <div class="carlist-list-item" *ngFor="let car of friendsCars">
+            <div class="carlist-list-item-image">
+                <a routerLink="/car/{{car._id}}">
+                    <img src="{{car.imageSrc}}">
+                </a>
+            </div>
+            <div class="carlist-list-item-info">
+                <span>
+                    <strong>{{car.name}}</strong>
+                </span>
+                <span>{{car.plate}}</span>
+            </div>
+        </div>
+    </div>
 </div>

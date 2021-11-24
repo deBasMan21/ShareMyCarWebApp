@@ -13,7 +13,7 @@ export class CarDetailComponent implements OnInit {
   public id: string = '';
   public showRides: boolean = false;
 
-  public car: Car = { name: '', _id: '1', imageSrc: '', plate: '', reservations: [] };
+  public car: Car = { name: '', _id: '1', imageSrc: '', plate: '', reservations: [], isOwner: null };
 
   constructor(
     public route: ActivatedRoute,
@@ -33,6 +33,7 @@ export class CarDetailComponent implements OnInit {
         });
         this.car.reservations = tempCars;
         this.showRides = this.car.reservations.length > 0;
+        console.log(car.isOwner);
       });
     });
   }

@@ -38,7 +38,8 @@ export class RideDetailComponent implements OnInit {
     plate: '',
     imageSrc:
       '',
-    reservations: []
+    reservations: [],
+    isOwner: null
   };
 
   constructor(public route: ActivatedRoute, private carService: CarServiceService, private rideService: RideService, private router: Router) { }

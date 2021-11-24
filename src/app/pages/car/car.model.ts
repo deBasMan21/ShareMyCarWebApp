@@ -6,6 +6,7 @@ export class Car {
         public name: string,
         public plate: string,
         public imageSrc: string,
-        public reservations: Ride[]
+        public reservations: Ride[],
+        public isOwner: boolean | null
     ) { }
 }

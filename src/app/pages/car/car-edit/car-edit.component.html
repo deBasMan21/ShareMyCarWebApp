@@ -2,7 +2,7 @@
   <div class="caredit-title">
     <h1>Wijzig auto</h1>
   </div>
-  <div class="caredit-form">
+  <div class="caredit-form" *ngIf="car.isOwner">
     <form (ngSubmit)="submit()">
       <div class="caredit-form-field">
         <label>Autonaam:</label>

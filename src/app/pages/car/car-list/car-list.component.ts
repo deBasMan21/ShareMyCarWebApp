@@ -10,11 +10,15 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class CarListComponent implements OnInit {
   cars: Car[] = [];
+  friendsCars: Car[] = [];
 
   constructor(private carService: CarServiceService, private authserv: AuthenticationService) { }
 
   ngOnInit(): void {
     this.carService.getAllCars().subscribe((cars) => this.cars = cars);
+    this.carService.getCarAllOtherCars().subscribe((cars) => {
+      this.friendsCars = cars;
+    });
     console.log(this.authserv.isLoggedIn())
   }
 }

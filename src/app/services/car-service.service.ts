@@ -40,5 +40,8 @@ export class CarServiceService {
     return this.http.get<Car>(`https://sharemycar.herokuapp.com/api/ride/${rideId}/car`)
   }
 
+  getCarAllOtherCars(): Observable<Car[]> {
+    return this.http.get<Car[]>('https://sharemycar.herokuapp.com/api/car/all/get');
+  }
 
 }
