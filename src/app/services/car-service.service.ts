@@ -21,7 +21,6 @@ export class CarServiceService {
   }
 
   updateCar(car: Car): Observable<Car> {
-    console.log(car);
     if (car._id !== null) {
       return this.http.put<Car>(`https://sharemycar.herokuapp.com/api/car/${car._id}`, car);
     } else {
@@ -30,12 +29,10 @@ export class CarServiceService {
   }
 
   deleteCar(carId: String): Observable<Car> {
-    console.log("delete car");
     return this.http.delete<Car>(`https://sharemycar.herokuapp.com/api/car/${carId}`);
   }
 
   addCar(car: Car): Observable<Car> {
-    console.log("add car");
     return this.http.post<Car>(`https://sharemycar.herokuapp.com/api/car/`, car)
   }
 
