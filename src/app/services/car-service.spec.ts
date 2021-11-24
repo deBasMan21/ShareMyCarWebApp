@@ -5,10 +5,10 @@ import { Car } from '../pages/car/car.model';
 import { CarServiceService } from './car-service.service';
 
 // Mock object to use in tests
-const expectedCars: Car[] = [new Car('id', 'name', 'plate', 'image', [])];
-const singleCar: Car = new Car('id', 'name', 'plate', 'image', []);
-const updatedCar: Car = new Car('id', 'updatedName', 'plate', 'image', []);
-const newCar: Car = new Car(null, 'updatedName', 'plate', 'image', []);
+const expectedCars: Car[] = [new Car('id', 'name', 'plate', 'image', [], false)];
+const singleCar: Car = new Car('id', 'name', 'plate', 'image', [], false);
+const updatedCar: Car = new Car('id', 'updatedName', 'plate', 'image', [], false);
+const newCar: Car = new Car(null, 'updatedName', 'plate', 'image', [], false);
 
 //describe to start tests
 describe('CarService', () => {

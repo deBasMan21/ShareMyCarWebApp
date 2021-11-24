@@ -29,7 +29,9 @@ export class CarDetailComponent implements OnInit {
         var tempCars: Ride[] = [];
         car.reservations.forEach((item) => {
           const ride: Ride = new Ride(item._id, item.name, new Date(item.beginDateTime), new Date(item.endDateTime), item.destination, new Date(item.reservationDateTime), item.user);
-          tempCars.push(ride);
+          if (ride.beginDateTime > new Date()) {
+            tempCars.push(ride);
+          }
         });
         this.car.reservations = tempCars;
         this.showRides = this.car.reservations.length > 0;
