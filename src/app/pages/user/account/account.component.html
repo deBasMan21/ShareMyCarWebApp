@@ -14,8 +14,11 @@
         <h3><strong>Aantal vrienden:</strong></h3>
         <h3>0 vrienden</h3>
         <h3><strong>Tijd tot opnieuw inloggen:</strong></h3>
-        <h3>{{expireDateTime.days}} dagen {{expireDateTime.hours}} uur
-            {{expireDateTime.minutes}} minuten</h3>
+        <h3>
+            <span *ngIf="expireDateTime.days > 0">{{expireDateTime.days}} dag </span>
+            <span *ngIf="expireDateTime.hours > 0">{{expireDateTime.hours}} uur </span>
+            <span *ngIf="expireDateTime.minutes > 0">{{expireDateTime.minutes}} minuten </span>
+        </h3>
     </div>
     <div class="account-actions">
         <button class="rideDetailButton buttonStyleForAnchor" (click)="logOut()">
