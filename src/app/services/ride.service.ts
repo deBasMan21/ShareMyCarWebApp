@@ -9,7 +9,7 @@ import { Ride } from '../pages/ride/ride.model';
 })
 export class RideService {
   public rides: Ride[] = [];
-  baseurl: string = 'http://85.215.212.200/api';
+  baseurl: string = 'https://sharemycar.herokuapp.com/api';
 
   constructor(private http: HttpClient) {}
 

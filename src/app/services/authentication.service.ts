@@ -8,7 +8,7 @@ import { User } from '../pages/user/user.model';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  baseurl: string = 'http://85.215.212.200/api';
+  baseurl: string = 'https://sharemycar.herokuapp.com/api';
 
   constructor(private http: HttpClient, private router: Router) {}
 
