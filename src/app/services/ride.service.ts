@@ -5,30 +5,33 @@ import { Car } from '../pages/car/car.model';
 import { Ride } from '../pages/ride/ride.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RideService {
   public rides: Ride[] = [];
+  baseurl: string = 'http://85.215.212.200/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getRideById(id: String): Observable<Ride> {
-    return this.http.get<Ride>(`https://sharemycar.herokuapp.com/api/ride/${id}`);
+    return this.http.get<Ride>(`${this.baseurl}/ride/${id}`);
   }
 
   deleteRideFromCar(rideId: String, carId: String): Observable<Ride> {
-    return this.http.delete<Ride>(`https://sharemycar.herokuapp.com/api/car/${carId}/ride/${rideId}`);
+    return this.http.delete<Ride>(
+      `${this.baseurl}/car/${carId}/ride/${rideId}`
+    );
   }
 
   addRide(ride: Ride, carId: String): Observable<Ride> {
-    return this.http.post<Ride>(`https://sharemycar.herokuapp.com/api/car/${carId}/ride`, ride);
+    return this.http.post<Ride>(`${this.baseurl}/car/${carId}/ride`, ride);
   }
 
   updateRide(ride: Ride, rideId: String): Observable<Ride> {
-    return this.http.put<Ride>(`https://sharemycar.herokuapp.com/api/ride/${rideId}`, ride);
+    return this.http.put<Ride>(`${this.baseurl}/ride/${rideId}`, ride);
   }
 
   getRidesForUser(): Observable<Ride[]> {
-    return this.http.get<Ride[]>('https://sharemycar.herokuapp.com/api/ride');
+    return this.http.get<Ride[]>(`${this.baseurl}/ride`);
   }
 }

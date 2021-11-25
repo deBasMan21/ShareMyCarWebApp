@@ -5,23 +5,26 @@ import { Observable } from 'rxjs';
 import { User } from '../pages/user/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
+  baseurl: string = 'http://85.215.212.200/api';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: String, password: String) {
-    this.http.post<any>('https://sharemycar.herokuapp.com/api/login', { email: email, password: password }).subscribe((res) => {
-      console.log(res);
-      this.setSession(res);
-      this.router.navigate(['/car']);
-    });
+    this.http
+      .post<any>(`${this.baseurl}/login`, { email: email, password: password })
+      .subscribe((res) => {
+        console.log(res);
+        this.setSession(res);
+        this.router.navigate(['/car']);
+      });
   }
 
   logout() {
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
   }
 
   private setSession(res: any) {
@@ -51,13 +54,15 @@ export class AuthenticationService {
   }
 
   getUser(): Observable<User> {
-    return this.http.get<User>('https://sharemycar.herokuapp.com/api/user');
+    return this.http.get<User>(`${this.baseurl}/user`);
   }
 
   register(user: any) {
-    return this.http.post<any>('https://sharemycar.herokuapp.com/api/register', user).subscribe((res) => {
-      this.setSession(res);
-      this.router.navigate(['/car']);
-    });
+    return this.http
+      .post<any>(`${this.baseurl}/register`, user)
+      .subscribe((res) => {
+        this.setSession(res);
+        this.router.navigate(['/car']);
+      });
   }
 }
