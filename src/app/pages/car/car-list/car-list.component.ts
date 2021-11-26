@@ -9,16 +9,25 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./car-list.component.scss'],
 })
 export class CarListComponent implements OnInit {
+  otherCarDone: boolean = false;
+  carsDone: boolean = false;
   cars: Car[] = [];
   friendsCars: Car[] = [];
 
-  constructor(private carService: CarServiceService, private authserv: AuthenticationService) { }
+  constructor(
+    private carService: CarServiceService,
+    private authserv: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
-    this.carService.getAllCars().subscribe((cars) => this.cars = cars);
+    this.carService.getAllCars().subscribe((cars) => {
+      this.cars = cars;
+      this.carsDone = true;
+    });
     this.carService.getCarAllOtherCars().subscribe((cars) => {
       this.friendsCars = cars;
+      this.otherCarDone = true;
     });
-    console.log(this.authserv.isLoggedIn())
+    console.log(this.authserv.isLoggedIn());
   }
 }
