@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../car.model';
 import { CarServiceService } from 'src/app/services/car-service.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-car-list',
@@ -14,10 +13,7 @@ export class CarListComponent implements OnInit {
   cars: Car[] = [];
   friendsCars: Car[] = [];
 
-  constructor(
-    private carService: CarServiceService,
-    private authserv: AuthenticationService
-  ) {}
+  constructor(private carService: CarServiceService) {}
 
   ngOnInit(): void {
     this.carService.getAllCars().subscribe((cars) => {
@@ -28,6 +24,5 @@ export class CarListComponent implements OnInit {
       this.friendsCars = cars;
       this.otherCarDone = true;
     });
-    console.log(this.authserv.isLoggedIn());
   }
 }
