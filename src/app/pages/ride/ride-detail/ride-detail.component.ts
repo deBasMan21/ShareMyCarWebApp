@@ -14,6 +14,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./ride-detail.component.scss'],
 })
 export class RideDetailComponent implements OnInit {
+  public rideDone: boolean = false;
   isOwner: boolean = false;
   id: String = '';
   ride: Ride = {
@@ -23,13 +24,13 @@ export class RideDetailComponent implements OnInit {
     endDateTime: new Date(2021, 11, 11, 14),
     destination: new Location('', '', '', ''),
     reservationDateTime: new Date(2021, 12, 11, 12),
-    user: new User('', '', '', [])
+    user: new User('', '', '', []),
   };
 
   positionMap = {
-    street: "",
-    num: "",
-    city: ""
+    street: '',
+    num: '',
+    city: '',
   };
 
   mapsURL = '';
@@ -38,13 +39,18 @@ export class RideDetailComponent implements OnInit {
     _id: '',
     name: '',
     plate: '',
-    imageSrc:
-      '',
+    imageSrc: '',
     reservations: [],
-    isOwner: null
+    isOwner: null,
   };
 
-  constructor(public route: ActivatedRoute, private carService: CarServiceService, private rideService: RideService, private router: Router, private authService: AuthenticationService) { }
+  constructor(
+    public route: ActivatedRoute,
+    private carService: CarServiceService,
+    private rideService: RideService,
+    private router: Router,
+    private authService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -60,15 +66,18 @@ export class RideDetailComponent implements OnInit {
           if (this.ride.user.email == user.email) {
             this.isOwner = true;
           }
+          this.rideDone = true;
         });
       });
     });
   }
 
   deleteRide(): void {
-    this.rideService.deleteRideFromCar(this.id, this.car._id!).subscribe((res) => {
-      this.router.navigate([`/car/${this.car._id}`]);
-    });
+    this.rideService
+      .deleteRideFromCar(this.id, this.car._id!)
+      .subscribe((res) => {
+        this.router.navigate([`/car/${this.car._id}`]);
+      });
   }
 
   generateMapsUrl() {
@@ -76,8 +85,13 @@ export class RideDetailComponent implements OnInit {
     this.positionMap.street = this.ride.destination.address;
     let firstDigit: any = this.ride.destination.address.match(/\d/);
     let index: number = this.ride.destination.address.indexOf(firstDigit);
-    this.positionMap.num = this.ride.destination.address.substring(index, this.ride.destination.address.length);
-    this.positionMap.street = this.ride.destination.address.substring(0, index).trim();
+    this.positionMap.num = this.ride.destination.address.substring(
+      index,
+      this.ride.destination.address.length
+    );
+    this.positionMap.street = this.ride.destination.address
+      .substring(0, index)
+      .trim();
 
     this.mapsURL = `https://maps.google.com/maps?q=${this.positionMap.street}%20${this.positionMap.num}%20%${this.positionMap.city}&t=&z=20&ie=UTF8&iwloc=&output=embed`;
   }

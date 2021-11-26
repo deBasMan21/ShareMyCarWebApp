@@ -10,16 +10,24 @@ import { CarServiceService } from 'src/app/services/car-service.service';
   styleUrls: ['./car-detail.component.scss'],
 })
 export class CarDetailComponent implements OnInit {
+  public carDone = false;
   public id: string = '';
   public showRides: boolean = false;
 
-  public car: Car = { name: '', _id: '1', imageSrc: '', plate: '', reservations: [], isOwner: null };
+  public car: Car = {
+    name: '',
+    _id: '1',
+    imageSrc: '',
+    plate: '',
+    reservations: [],
+    isOwner: null,
+  };
 
   constructor(
     public route: ActivatedRoute,
     private carService: CarServiceService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
@@ -28,13 +36,22 @@ export class CarDetailComponent implements OnInit {
         this.car = car as Car;
         var tempCars: Ride[] = [];
         car.reservations.forEach((item) => {
-          const ride: Ride = new Ride(item._id, item.name, new Date(item.beginDateTime), new Date(item.endDateTime), item.destination, new Date(item.reservationDateTime), item.user);
+          const ride: Ride = new Ride(
+            item._id,
+            item.name,
+            new Date(item.beginDateTime),
+            new Date(item.endDateTime),
+            item.destination,
+            new Date(item.reservationDateTime),
+            item.user
+          );
           if (ride.beginDateTime > new Date()) {
             tempCars.push(ride);
           }
         });
         this.car.reservations = tempCars;
         this.showRides = this.car.reservations.length > 0;
+        this.carDone = true;
       });
     });
   }

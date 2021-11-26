@@ -6,8 +6,10 @@
       <span class="material-icons">add</span>
     </a>
   </div>
-  <div *ngIf="!carsDone" class="spinner-grow" role="status">
-    <span class="sr-only"></span>
+  <div class="carlist-loader">
+    <div *ngIf="!carsDone" class="spinner-grow" role="status">
+      <span class="sr-only"></span>
+    </div>
   </div>
   <div class="carlist-list">
     <div class="carlist-list-item" *ngFor="let car of cars">
@@ -27,8 +29,10 @@
   <div class="carlist-title">
     <h1>Auto's van je vrienden:</h1>
   </div>
-  <div *ngIf="!carsDone" class="spinner-grow" role="status">
-    <span class="sr-only"></span>
+  <div class="carlist-loader">
+    <div *ngIf="!carsDone" class="spinner-grow" role="status">
+      <span class="sr-only"></span>
+    </div>
   </div>
   <div class="carlist-list">
     <div class="carlist-list-item" *ngFor="let car of friendsCars">

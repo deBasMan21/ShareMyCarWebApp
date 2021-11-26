@@ -6,6 +6,14 @@
   justify-content: center;
   margin-top: 20px;
 
+  &-loader {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
   &-title {
     width: 100%;
     display: flex;
@@ -46,39 +54,37 @@
     }
   }
 
-  &-location{
+  &-location {
     width: 50%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: baseline;
 
-    &-info{
+    &-info {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       margin-bottom: 20px;
 
-      span{
+      span {
         width: 100%;
         text-align: center;
       }
     }
 
-    &-user{
+    &-user {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 
-      span{
+      span {
         width: 100%;
         text-align: center;
       }
     }
-
-
   }
 
   &-carinfo {
@@ -106,15 +112,15 @@
     }
   }
 
-  &-map{
+  &-map {
     margin-top: 50px;
     width: 50%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
-    iframe{
+
+    iframe {
       border-radius: 15px;
     }
   }

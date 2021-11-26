@@ -1,44 +1,72 @@
 <div class="rideedit">
-    <div class="rideedit-title">
-        <h1>Wijzig rit</h1>
-    </div>
-    <div class="rideedit-form" *ngIf="isOwner">
-        <form (ngSubmit)="submit()">
-            <h2>Rit:</h2>
-            <div class="rideedit-form-field">
-                <label>Ritnaam:</label>
-                <input type="text" name="name" [(ngModel)]="ride.name">
-            </div>
-            <div class="rideedit-form-field">
-                <label>Begin:</label>
-                <input type="datetime-local" name="beginDateTimeString" [(ngModel)]="beginDateTimeString">
-            </div>
-            <div class="rideedit-form-field">
-                <label>Eind:</label>
-                <input type="datetime-local" name="endDateTimeString" [(ngModel)]="endDateTimeString">
-            </div>
+  <div class="rideedit-title">
+    <h1>Wijzig rit</h1>
+  </div>
+  <div class="rideedit-form" *ngIf="showForm">
+    <form (ngSubmit)="submit()">
+      <h2>Rit:</h2>
+      <div class="rideedit-form-field">
+        <label>Ritnaam:</label>
+        <input type="text" name="name" [(ngModel)]="ride.name" />
+      </div>
+      <div class="rideedit-form-field">
+        <label>Begin:</label>
+        <input
+          type="datetime-local"
+          name="beginDateTimeString"
+          [(ngModel)]="beginDateTimeString"
+        />
+      </div>
+      <div class="rideedit-form-field">
+        <label>Eind:</label>
+        <input
+          type="datetime-local"
+          name="endDateTimeString"
+          [(ngModel)]="endDateTimeString"
+        />
+      </div>
 
-            <h2>Bestemming:</h2>
-            <div class="rideedit-form-field">
-                <label>Naam:</label>
-                <input type="text" name="destination.name" [(ngModel)]="ride.destination.name">
-            </div>
-            <div class="rideedit-form-field">
-                <label>Adres:</label>
-                <input type="text" name="destination.address" [(ngModel)]="ride.destination.address">
-            </div>
-            <div class="rideedit-form-field">
-                <label>Postcode:</label>
-                <input type="text" name="destination.zipCode" [(ngModel)]="ride.destination.zipCode">
-            </div>
-            <div class="rideedit-form-field">
-                <label>Stad:</label>
-                <input type="text" name="destination.city" [(ngModel)]="ride.destination.city">
-            </div>
+      <h2>Bestemming:</h2>
+      <div class="rideedit-form-field">
+        <label>Naam:</label>
+        <input
+          type="text"
+          name="destination.name"
+          [(ngModel)]="ride.destination.name"
+        />
+      </div>
+      <div class="rideedit-form-field">
+        <label>Adres:</label>
+        <input
+          type="text"
+          name="destination.address"
+          [(ngModel)]="ride.destination.address"
+        />
+      </div>
+      <div class="rideedit-form-field">
+        <label>Postcode:</label>
+        <input
+          type="text"
+          name="destination.zipCode"
+          [(ngModel)]="ride.destination.zipCode"
+        />
+      </div>
+      <div class="rideedit-form-field">
+        <label>Stad:</label>
+        <input
+          type="text"
+          name="destination.city"
+          [(ngModel)]="ride.destination.city"
+        />
+      </div>
 
-            <div class="rideedit-form-field">
-                <input type="submit" class="rideDetailButton" placeholder="Wijzig rit">
-            </div>
-        </form>
-    </div>
+      <div class="rideedit-form-field">
+        <input
+          type="submit"
+          class="rideDetailButton"
+          placeholder="Wijzig rit"
+        />
+      </div>
+    </form>
+  </div>
 </div>

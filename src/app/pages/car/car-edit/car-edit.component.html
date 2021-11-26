@@ -2,7 +2,7 @@
   <div class="caredit-title">
     <h1>Wijzig auto</h1>
   </div>
-  <div class="caredit-form" *ngIf="car.isOwner">
+  <div class="caredit-form" *ngIf="showEdit">
     <form (ngSubmit)="submit()">
       <div class="caredit-form-field">
         <label>Autonaam:</label>
@@ -17,7 +17,11 @@
         <input type="text" name="imgSrc" [(ngModel)]="car.imageSrc" />
       </div>
       <div class="caredit-form-field">
-        <input type="submit" class="rideDetailButton" placeholder="Wijzig auto" />
+        <input
+          type="submit"
+          class="rideDetailButton"
+          placeholder="Wijzig auto"
+        />
       </div>
     </form>
   </div>
