@@ -1,8 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CarListComponent } from './car-list.component';
 import { CarServiceService } from 'src/app/services/car-service.service';
+import { Car } from '../car.model';
+
+const expectedCars: Car[] = [new Car('1', 'name', 'plate', 'image', [], false)];
+const expectedOthercars: Car[] = [
+  new Car('2', 'name', 'plate', 'image', [], false),
+];
 
 //describe to start tests
 describe('CarService', () => {
@@ -35,5 +40,23 @@ describe('CarService', () => {
   it('should be created', () => {
     //expect service to exist
     expect(component).toBeTruthy();
+  });
+
+  it('should have correct data', (done: DoneFn) => {
+    carService.getAllCars.and.returnValue(of(expectedCars));
+    carService.getCarAllOtherCars.and.returnValue(of(expectedOthercars));
+
+    component.ngOnInit();
+
+    expect(component.cars.length == 1);
+    expect(component.cars[0]._id === '1');
+
+    expect(component.friendsCars.length == 1);
+    expect(component.friendsCars[0]._id === '2');
+
+    expect(component.carsDone);
+    expect(component.otherCarDone);
+
+    done();
   });
 });
