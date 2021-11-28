@@ -88,9 +88,16 @@
     justify-content: center;
     align-content: center;
 
-    img {
-      max-width: 70%;
-      height: fit-content;
+    a{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      img {
+        max-width: 70%;
+        height: fit-content;
+      }
     }
 
     h3 {

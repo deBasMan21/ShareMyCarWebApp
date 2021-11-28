@@ -29,7 +29,9 @@
     </div>
   </div>
   <div class="ridedetail-carinfo">
-    <img src="{{ car.imageSrc }}" alt="" />
+    <a routerLink="/car/{{car._id}}">
+      <img src="{{ car.imageSrc }}" alt="" />
+    </a>
     <h3>{{ car.name }}</h3>
     <h4>{{ car.plate }}</h4>
   </div>
