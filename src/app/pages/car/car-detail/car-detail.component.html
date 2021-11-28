@@ -1,4 +1,9 @@
 <div class="cardetail">
+  <div class="cardetail-loader">
+    <div *ngIf="!carDone" class="spinner-grow" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
   <div class="cardetail-info">
     <div class="cardetail-info-text">
       <h1>{{ car.name }}</h1>
@@ -13,8 +18,14 @@
       <h2>Ritten met deze auto</h2>
     </div>
     <div class="cardetail-rides-list">
-      <div class="cardetail-rides-list-item" *ngFor="let ride of car.reservations">
-        <a routerLink="/ride/{{ ride._id }}" class="rideDetailButton cardetail-rides-list-item-link">
+      <div
+        class="cardetail-rides-list-item"
+        *ngFor="let ride of car.reservations"
+      >
+        <a
+          routerLink="/ride/{{ ride._id }}"
+          class="rideDetailButton cardetail-rides-list-item-link"
+        >
           <h3>{{ ride.name }}</h3>
           <span>{{ ride.user.name }}</span>
           <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
@@ -24,8 +35,17 @@
     </div>
   </div>
   <div class="cardetail-addride">
-    <a routerLink="/car/{{ id }}/ride/add" class="buttonStyleForAnchor">Plan een rit</a>
-    <a *ngIf="car.isOwner" routerLink="/car/{{ id }}/edit" class="buttonStyleForAnchor">Wijzig auto</a>
-    <a *ngIf="car.isOwner" (click)="deleteCar()" class="buttonStyleForAnchor">Verwijder auto</a>
+    <a routerLink="/car/{{ id }}/ride/add" class="buttonStyleForAnchor"
+      >Plan een rit</a
+    >
+    <a
+      *ngIf="car.isOwner"
+      routerLink="/car/{{ id }}/edit"
+      class="buttonStyleForAnchor"
+      >Wijzig auto</a
+    >
+    <a *ngIf="car.isOwner" (click)="deleteCar()" class="buttonStyleForAnchor"
+      >Verwijder auto</a
+    >
   </div>
 </div>

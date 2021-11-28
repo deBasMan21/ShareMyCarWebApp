@@ -1,28 +1,36 @@
 <div class="ridelist">
-    <div class="ridelist-title">
-        <h1>Jouw ritten</h1>
+  <div class="ridelist-title">
+    <h1>Jouw ritten</h1>
+  </div>
+  <div class="ridelist-loader">
+    <div *ngIf="!ridesDone" class="spinner-grow" role="status">
+      <span class="sr-only"></span>
     </div>
-    <div class="ridelist-list">
-        <div class="ridelist-list-item" *ngFor="let ride of rides">
-            <a routerLink="/ride/{{ride._id}}" class="ridelist-list-item-link rideDetailButton">
-                <div class="ridelist-list-item-link-title">
-                    <h3>{{ride.name}}</h3>
-                </div>
-                <div class="ridelist-list-item-link-time">
-                    <div class="ridelist-list-item-link-time-begin">
-                        <span><strong>Begin:</strong></span>
-                        <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
-                        <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
-                    </div>
-                </div>
-                <div class="ridelist-list-item-link-location">
-                    <div class="ridelist-list-item-link-location-container">
-                        <span><strong>Gebruiker:</strong></span>
-                        <span>{{ride.user.name}}</span>
-                        <span>{{ride.user.email}}</span>
-                    </div>
-                </div>
-            </a>
+  </div>
+  <div class="ridelist-list">
+    <div class="ridelist-list-item" *ngFor="let ride of rides">
+      <a
+        routerLink="/ride/{{ ride._id }}"
+        class="ridelist-list-item-link rideDetailButton"
+      >
+        <div class="ridelist-list-item-link-title">
+          <h3>{{ ride.name }}</h3>
         </div>
+        <div class="ridelist-list-item-link-time">
+          <div class="ridelist-list-item-link-time-begin">
+            <span><strong>Begin:</strong></span>
+            <span>{{ ride.beginDateTime.toLocaleDateString() }}</span>
+            <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
+          </div>
+        </div>
+        <div class="ridelist-list-item-link-location">
+          <div class="ridelist-list-item-link-location-container">
+            <span><strong>Gebruiker:</strong></span>
+            <span>{{ ride.user.name }}</span>
+            <span>{{ ride.user.email }}</span>
+          </div>
+        </div>
+      </a>
     </div>
+  </div>
 </div>

@@ -9,39 +9,38 @@ import { Ride } from '../pages/ride/ride.model';
 })
 export class CarServiceService {
   cars: Car[] = [];
-
-  constructor(private http: HttpClient) { }
+  baseurl: string = 'https://sharemycar.herokuapp.com/api';
+  constructor(private http: HttpClient) {}
 
   getAllCars(): Observable<Car[]> {
-    return this.http.get<Car[]>('https://sharemycar.herokuapp.com/api/car');
+    return this.http.get<Car[]>(`${this.baseurl}/car`);
   }
 
   getCarById(id: String): Observable<Car> {
-    return this.http.get<Car>(`https://sharemycar.herokuapp.com/api/car/${id}`);
+    return this.http.get<Car>(`${this.baseurl}/car/${id}`);
   }
 
   updateCar(car: Car): Observable<Car> {
     if (car._id !== null) {
-      return this.http.put<Car>(`https://sharemycar.herokuapp.com/api/car/${car._id}`, car);
+      return this.http.put<Car>(`${this.baseurl}/car/${car._id}`, car);
     } else {
       return this.addCar(car);
     }
   }
 
   deleteCar(carId: String): Observable<Car> {
-    return this.http.delete<Car>(`https://sharemycar.herokuapp.com/api/car/${carId}`);
+    return this.http.delete<Car>(`${this.baseurl}/car/${carId}`);
   }
 
   addCar(car: Car): Observable<Car> {
-    return this.http.post<Car>(`https://sharemycar.herokuapp.com/api/car/`, car)
+    return this.http.post<Car>(`${this.baseurl}/car/`, car);
   }
 
   getCarForRide(rideId: String): Observable<Car> {
-    return this.http.get<Car>(`https://sharemycar.herokuapp.com/api/ride/${rideId}/car`)
+    return this.http.get<Car>(`${this.baseurl}/ride/${rideId}/car`);
   }
 
   getCarAllOtherCars(): Observable<Car[]> {
-    return this.http.get<Car[]>('https://sharemycar.herokuapp.com/api/car/all/get');
+    return this.http.get<Car[]>(`${this.baseurl}/car/all/get`);
   }
-
 }

@@ -10,38 +10,52 @@ import { Ride } from '../ride.model';
 @Component({
   selector: 'app-ride-edit',
   templateUrl: './ride-edit.component.html',
-  styleUrls: ['./ride-edit.component.scss']
+  styleUrls: ['./ride-edit.component.scss'],
 })
 export class RideEditComponent implements OnInit {
-  public isOwner: boolean = false;
+  public showForm: boolean = false;
   public id: String = '';
   public carId: String = '';
   public beginDateTimeString = '';
   public endDateTimeString = '';
-  public ride: Ride = { _id: '', name: '', beginDateTime: new Date(), endDateTime: new Date(), destination: new Location('', '', '', ''), user: new User('', '', '', []), reservationDateTime: new Date() };
+  public ride: Ride = {
+    _id: '',
+    name: '',
+    beginDateTime: new Date(),
+    endDateTime: new Date(),
+    destination: new Location('', '', '', ''),
+    user: new User('', '', '', []),
+    reservationDateTime: new Date(),
+  };
 
   constructor(
     public route: ActivatedRoute,
     private rideService: RideService,
     private router: Router,
     private authService: AuthenticationService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
-      this.carId = params['carId']
+      this.carId = params['carId'];
       if (this.id != undefined) {
         this.rideService.getRideById(this.id).subscribe((ride) => {
           this.ride = ride;
-          this.beginDateTimeString = ride.beginDateTime.toLocaleString().replace('Z', '');
-          this.endDateTimeString = ride.endDateTime.toLocaleString().replace('Z', '');
+          this.beginDateTimeString = ride.beginDateTime
+            .toLocaleString()
+            .replace('Z', '');
+          this.endDateTimeString = ride.endDateTime
+            .toLocaleString()
+            .replace('Z', '');
           this.authService.getUser().subscribe((user) => {
             if (this.ride.user.email == user.email) {
-              this.isOwner = true;
+              this.showForm = true;
             }
           });
         });
+      } else {
+        this.showForm = true;
       }
     });
   }
@@ -56,7 +70,7 @@ export class RideEditComponent implements OnInit {
       //updates ride
       this.rideService.updateRide(this.ride, this.id).subscribe((ride) => {
         this.router.navigate([`/ride/${ride._id}`]);
-      })
+      });
     } else {
       //creates ride
       this.rideService.addRide(this.ride, this.carId).subscribe((ride) => {
@@ -64,5 +78,4 @@ export class RideEditComponent implements OnInit {
       });
     }
   }
-
 }

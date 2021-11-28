@@ -1,13 +1,18 @@
 <div class="ridedetail">
+  <div class="ridedetail-loader">
+    <div *ngIf="!rideDone" class="spinner-grow" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
   <div class="ridedetail-title">
     <h1>{{ ride.name }}</h1>
   </div>
-  <div class="ridedetail-rideinfo">
+  <div class="ridedetail-rideinfo" *ngIf="ride.user.name != ''">
     <div class="ridedetail-rideinfo-begin">
       <span><strong>Gebruiker:</strong></span>
-      <span>{{ride.user.name}}</span>
-      <span>{{ride.user.email}}</span>
-      <span>{{ride.user.phoneNumber}}</span>
+      <span>{{ ride.user.name }}</span>
+      <span>{{ ride.user.email }}</span>
+      <span>{{ ride.user.phoneNumber }}</span>
     </div>
     <div class="ridedetail-rideinfo-end">
       <span><strong>Begin:</strong></span>
@@ -15,12 +20,12 @@
       <span>{{ ride.beginDateTime.toLocaleTimeString() }}</span>
     </div>
   </div>
-  <div class="ridedetail-location">
+  <div class="ridedetail-location" *ngIf="ride.destination.name != ''">
     <div class="ridedetail-location-info">
       <span><strong>Bestemming:</strong></span>
-      <span>{{ride.destination.name}}</span>
-      <span>{{ride.destination.address}}</span>
-      <span>{{ride.destination.zipCode}} {{ride.destination.city}}</span>
+      <span>{{ ride.destination.name }}</span>
+      <span>{{ ride.destination.address }}</span>
+      <span>{{ ride.destination.zipCode }} {{ ride.destination.city }}</span>
     </div>
     <div class="ridedetail-location-user">
       <span><strong>Eind:</strong></span>
@@ -28,15 +33,15 @@
       <span>{{ ride.endDateTime.toLocaleTimeString() }}</span>
     </div>
   </div>
-  <div class="ridedetail-carinfo">
+  <div class="ridedetail-carinfo" *ngIf="car.name != ''">
     <a routerLink="/car/{{car._id}}">
       <img src="{{ car.imageSrc }}" alt="" />
     </a>
     <h3>{{ car.name }}</h3>
     <h4>{{ car.plate }}</h4>
   </div>
-  <div class="ridedetail-map">
-    <iframe *ngIf="mapsURL.length > 80" [src]='mapsURL | safe' width="75%" height="315" frameborder="0" allowfullscreen
+  <div class="ridedetail-map" *ngIf="mapsURL != ''">
+    <iframe *ngIf="mapsURL.length > 80" [src]="mapsURL | safe" width="75%" height="315" frameborder="0" allowfullscreen
       webkitallowfullscreen mozallowfullscreen>
     </iframe>
   </div>
