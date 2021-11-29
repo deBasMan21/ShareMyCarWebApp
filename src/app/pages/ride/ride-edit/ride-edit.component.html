@@ -3,69 +3,65 @@
     <h1>Wijzig rit</h1>
   </div>
   <div class="rideedit-form" *ngIf="showForm">
-    <form (ngSubmit)="submit()">
+    <form #rideEditForm="ngForm" name="form" (ngSubmit)="rideEditForm.form.valid && submit()" novalidate>
       <h2>Rit:</h2>
       <div class="rideedit-form-field">
         <label>Ritnaam:</label>
-        <input type="text" name="name" [(ngModel)]="ride.name" />
+        <input type="text" name="name" [(ngModel)]="ride.name" #ridename="ngModel" required />
+        <label class="rideedit-form-field-validation" *ngIf="ridename.invalid && ridename.touched">Ritnaam moet ingevuld
+          zijn</label>
       </div>
       <div class="rideedit-form-field">
         <label>Begin:</label>
-        <input
-          type="datetime-local"
-          name="beginDateTimeString"
-          [(ngModel)]="beginDateTimeString"
-        />
+        <input validDate type="datetime-local" name="beginDateTimeString" [(ngModel)]="beginDateTimeString"
+          #rideBegin="ngModel" required />
+        <label class="rideedit-form-field-validation" *ngIf="rideBegin.invalid && rideBegin.touched">Ritbegin moet in de
+          toekomst zijn</label>
       </div>
       <div class="rideedit-form-field">
         <label>Eind:</label>
-        <input
-          type="datetime-local"
-          name="endDateTimeString"
-          [(ngModel)]="endDateTimeString"
-        />
+        <input validDate type="datetime-local" name="endDateTimeString" [(ngModel)]="endDateTimeString"
+          #rideEnd="ngModel" required />
+        <label class="rideedit-form-field-validation" *ngIf="rideEnd.invalid && rideEnd.touched">Riteinde moet in de
+          toekomst zijn</label>
       </div>
 
       <h2>Bestemming:</h2>
       <div class="rideedit-form-field">
         <label>Naam:</label>
-        <input
-          type="text"
-          name="destination.name"
-          [(ngModel)]="ride.destination.name"
-        />
+        <input type="text" name="destination.name" [(ngModel)]="ride.destination.name" #rideDestinationName="ngModel"
+          required />
+        <label class="rideedit-form-field-validation"
+          *ngIf="rideDestinationName.invalid && rideDestinationName.touched">Bestemming naam moet ingevuld
+          zijn</label>
       </div>
       <div class="rideedit-form-field">
         <label>Adres:</label>
-        <input
-          type="text"
-          name="destination.address"
-          [(ngModel)]="ride.destination.address"
-        />
+        <input validStreet type="text" name="destination.address" [(ngModel)]="ride.destination.address"
+          #rideDestinationAddress="ngModel" required />
+        <label class="rideedit-form-field-validation"
+          *ngIf="rideDestinationAddress.invalid && rideDestinationAddress.touched">Bestemming
+          adres moet ingevuld en geldig zijn (bijv. Voorbeeldstraat 21)</label>
       </div>
       <div class="rideedit-form-field">
         <label>Postcode:</label>
-        <input
-          type="text"
-          name="destination.zipCode"
-          [(ngModel)]="ride.destination.zipCode"
-        />
+        <input validZip type="text" name="destination.zipCode" [(ngModel)]="ride.destination.zipCode"
+          #rideDestinationZip="ngModel" required />
+        <label class="rideedit-form-field-validation"
+          *ngIf="rideDestinationZip.invalid && rideDestinationZip.touched">Bestemming
+          postcode moet ingevuld en geldig zijn (bijv. 1234AA)</label>
       </div>
       <div class="rideedit-form-field">
         <label>Stad:</label>
-        <input
-          type="text"
-          name="destination.city"
-          [(ngModel)]="ride.destination.city"
-        />
+        <input type="text" name="destination.city" [(ngModel)]="ride.destination.city" #rideDestinationCity="ngModel"
+          required />
+        <label class="rideedit-form-field-validation"
+          *ngIf="rideDestinationCity.invalid && rideDestinationCity.touched">Bestemming
+          stad moet ingevuld zijn</label>
       </div>
 
       <div class="rideedit-form-field">
-        <input
-          type="submit"
-          class="rideDetailButton"
-          placeholder="Wijzig rit"
-        />
+        <input type="submit" class="rideDetailButton" placeholder="Wijzig rit" [disabled]="!rideEditForm.valid" />
       </div>
     </form>
   </div>

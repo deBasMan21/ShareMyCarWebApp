@@ -3,21 +3,29 @@
         <h1>Registreer</h1>
     </div>
     <div class="register-form">
-        <form (submit)="submit()">
+        <form #registerForm="ngForm" name="form" (ngSubmit)="registerForm.form.valid && submit()" novalidate>
             <div class="register-form-field">
                 <label>Naam:</label>
-                <input type="text" name="name" [(ngModel)]="user.name">
+                <input type="text" name="name" [(ngModel)]="user.name" #username="ngModel" required>
+                <label class="register-form-field-validation" *ngIf="username.invalid && username.touched">Naam moet
+                    ingevuld zijn</label>
             </div>
             <div class="register-form-field">
                 <label>Email:</label>
-                <input type="text" name="email" [(ngModel)]="user.email">
+                <input type="text" name="email" [(ngModel)]="user.email" #useremail="ngModel" email required>
+                <label class="register-form-field-validation" *ngIf="useremail.invalid && useremail.touched">Email moet
+                    ingevuld zijn</label>
             </div>
             <div class="register-form-field">
                 <label>Telefoonnummer:</label>
-                <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber">
+                <input validPhone type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber" #userphone="ngModel"
+                    required>
+                <label class="register-form-field-validation"
+                    *ngIf="userphone.invalid && userphone.touched">Telefoonnummer moet
+                    ingevuld zijn</label>
             </div>
             <div class="register-form-field">
-                <input type="submit" class="rideDetailButton" value="Registreer">
+                <input type="submit" class="rideDetailButton" value="Registreer" [disabled]="!registerForm.valid">
                 <button routerLink="/login" class="rideDetailButton">Al een account? Inloggen</button>
             </div>
         </form>

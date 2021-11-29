@@ -24,7 +24,7 @@ export class CarEditComponent implements OnInit {
     public route: ActivatedRoute,
     private carService: CarServiceService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
@@ -44,7 +44,7 @@ export class CarEditComponent implements OnInit {
     });
   }
 
-  async submit(): Promise<void> {
+  async onSubmit(): Promise<void> {
     await this.carService.updateCar(this.car).subscribe((car) => {
       console.log(car);
       if (this.id != undefined) {

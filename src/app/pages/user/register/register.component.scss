@@ -40,6 +40,10 @@
               border-radius: 15px;
               margin-top: 30px;
           }
+
+          &-validation{
+            color: red;
+          }
         }
     }
 }
@@ -72,4 +76,9 @@
   font-style: normal;
   text-decoration: none;
   color: black
+}
+
+.rideDetailButton:disabled{
+  box-shadow: none;
+  color: #aaa;
 }
