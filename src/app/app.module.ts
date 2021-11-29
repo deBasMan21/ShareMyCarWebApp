@@ -23,6 +23,10 @@ import { AuthenticationService } from './services/authentication.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { FriendsListComponent } from './pages/friends/friends-list/friends-list.component';
 import { FriendsAddComponent } from './pages/friends/friends-add/friends-add.component';
+import { DateValidatorDirective } from './shared/dateValidator.directive';
+import { ZipValidatorDirective } from './shared/zipValidator.directive';
+import { StreetValidatorDirective } from './shared/streetValidator.directive';
+import { PhoneValidatorDirective } from './shared/phoneValidator.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { FriendsAddComponent } from './pages/friends/friends-add/friends-add.com
     RegisterComponent,
     AccountComponent,
     FriendsListComponent,
-    FriendsAddComponent
+    FriendsAddComponent,
+    DateValidatorDirective,
+    ZipValidatorDirective,
+    StreetValidatorDirective,
+    PhoneValidatorDirective
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

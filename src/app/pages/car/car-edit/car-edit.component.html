@@ -3,25 +3,28 @@
     <h1>Wijzig auto</h1>
   </div>
   <div class="caredit-form" *ngIf="showEdit">
-    <form (ngSubmit)="submit()">
+    <form #carEditForm="ngForm" name="form" (ngSubmit)="carEditForm.form.valid && onSubmit()" novalidate>
       <div class="caredit-form-field">
         <label>Autonaam:</label>
-        <input type="text" name="name" [(ngModel)]="car.name" />
+        <input type="text" name="name" [(ngModel)]="car.name" #carname="ngModel" required
+          [ngClass]="{ 'is-invalid': carname.invalid }" />
+        <label class="caredit-form-field-validation" *ngIf="carname.invalid && carname.touched">Autonaam moet ingevuld
+          zijn</label>
       </div>
       <div class="caredit-form-field">
         <label>Kenteken:</label>
-        <input type="text" name="plate" [(ngModel)]="car.plate" />
+        <input type="text" name="plate" [(ngModel)]="car.plate" #carplate="ngModel" required />
+        <label class="caredit-form-field-validation" *ngIf="carplate.invalid && carplate.touched">Auto moet een kenteken
+          hebben</label>
       </div>
       <div class="caredit-form-field">
         <label>Afbeelding link:</label>
-        <input type="text" name="imgSrc" [(ngModel)]="car.imageSrc" />
+        <input type="text" name="imgSrc" [(ngModel)]="car.imageSrc" #carimage="ngModel" required />
+        <label class="caredit-form-field-validation" *ngIf="carimage.invalid && carimage.touched">Auto moet een plaatje
+          hebben</label>
       </div>
       <div class="caredit-form-field">
-        <input
-          type="submit"
-          class="rideDetailButton"
-          placeholder="Wijzig auto"
-        />
+        <input type="submit" class="rideDetailButton" placeholder="Wijzig auto" [disabled]="!carEditForm.valid" />
       </div>
     </form>
   </div>
