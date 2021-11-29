@@ -16,20 +16,21 @@ export class FriendsListComponent implements OnInit {
   constructor(private friendsService: FriendsService) { }
 
   ngOnInit(): void {
-    // this.addFriend("619b9c1cbe5759938d18b887");
+    this.doneLoading = false;
+
     this.friendsService.getAllFriends().subscribe((res) => {
       this.friends = res;
-      this.doneLoading = true ? res.length > 0 : this.doneLoading;
+      this.doneLoading = true ? this.friends.length > 0 : this.doneLoading;
     });
 
     this.friendsService.getAllFriendRecommendations().subscribe((res) => {
       this.recommendations = res;
-      this.doneLoading = true ? res.length > 0 : this.doneLoading;
+      this.doneLoading = true ? this.recommendations.length > 0 : this.doneLoading;
     });
 
     this.friendsService.getRequests().subscribe((res) => {
       this.requests = res;
-      this.doneLoading = true ? res.length > 0 : this.doneLoading;
+      this.doneLoading = true ? this.requests.length > 0 : this.doneLoading;
     })
   }
 

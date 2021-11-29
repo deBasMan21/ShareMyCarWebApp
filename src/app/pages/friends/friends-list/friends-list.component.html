@@ -14,7 +14,7 @@
                 <span>{{friend.email}}</span>
                 <span>{{friend.phoneNumber}}</span>
                 <span>{{friend.cars.length}} auto's</span>
-                <button (click)="removeFriend(friend._id)">Verwijder</button>
+                <button (click)="removeFriend(friend._id)" class="rideDetailButton">Verwijder</button>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <div class="friendslist-recommendations-list-item" *ngFor="let recom of recommendations">
                 <span><strong>{{recom.name}}</strong></span>
                 <span>{{recom.email}}</span>
-                <button (click)="addFriend(recom._id)">Voeg toe</button>
+                <button (click)="addFriend(recom._id)" class="rideDetailButton">Voeg toe</button>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
             <div class="friendslist-requests-list-item" *ngFor="let req of requests">
                 <span><strong>{{req.name}}</strong></span>
                 <span>{{req.email}}</span>
-                <button (click)="acceptFriend(req._id)">Accepteren</button>
-                <button (click)="ignoreFriend(req._id)">Negeren</button>
+                <button (click)="acceptFriend(req._id)" class="rideDetailButton">Accepteren</button>
+                <button (click)="ignoreFriend(req._id)" class="rideDetailButton">Negeren</button>
             </div>
         </div>
     </div>
