@@ -21,4 +21,20 @@ export class FriendsService {
   createFriend(friendId: String): Observable<any> {
     return this.http.post<any>(`${this.baseurl}/user/${friendId}/friend`, {});
   }
+
+  removeFriend(friendId: String): Observable<any> {
+    return this.http.delete<any>(`${this.baseurl}/user/${friendId}/friend`);
+  }
+
+  acceptRequest(friendId: String): Observable<any> {
+    return this.http.post<any>(`${this.baseurl}/user/${friendId}/accept`, {});
+  }
+
+  ignoreRequest(friendId: String): Observable<any> {
+    return this.http.delete<any>(`${this.baseurl}/user/${friendId}/ignore`, {});
+  }
+
+  getRequests(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseurl}/user/friends/requests`);
+  }
 }

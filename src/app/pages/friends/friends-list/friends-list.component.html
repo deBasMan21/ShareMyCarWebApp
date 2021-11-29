@@ -1,4 +1,9 @@
 <div class="friendslist">
+    <div class="friendslist-loader">
+        <div *ngIf="!doneLoading" class="spinner-grow" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
     <div class="friendslist-friends" *ngIf="friends.length > 0">
         <div class="friendslist-friends-title">
             <h1>Vrienden</h1>
@@ -9,6 +14,7 @@
                 <span>{{friend.email}}</span>
                 <span>{{friend.phoneNumber}}</span>
                 <span>{{friend.cars.length}} auto's</span>
+                <button (click)="removeFriend(friend._id)">Verwijder</button>
             </div>
         </div>
     </div>
@@ -21,6 +27,19 @@
                 <span><strong>{{recom.name}}</strong></span>
                 <span>{{recom.email}}</span>
                 <button (click)="addFriend(recom._id)">Voeg toe</button>
+            </div>
+        </div>
+    </div>
+    <div class="friendslist-requests" *ngIf="requests.length > 0">
+        <div class="friendslist-requests-title">
+            <h1>Verzoeken</h1>
+        </div>
+        <div class="friendslist-requests-list">
+            <div class="friendslist-requests-list-item" *ngFor="let req of requests">
+                <span><strong>{{req.name}}</strong></span>
+                <span>{{req.email}}</span>
+                <button (click)="acceptFriend(req._id)">Accepteren</button>
+                <button (click)="ignoreFriend(req._id)">Negeren</button>
             </div>
         </div>
     </div>
