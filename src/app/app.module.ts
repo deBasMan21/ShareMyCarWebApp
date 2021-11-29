@@ -21,6 +21,8 @@ import { CarServiceService } from './services/car-service.service';
 import { RideService } from './services/ride.service';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { FriendsListComponent } from './pages/friends/friends-list/friends-list.component';
+import { FriendsAddComponent } from './pages/friends/friends-add/friends-add.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AuthInterceptor } from './services/auth.interceptor';
     SafePipe,
     LoginComponent,
     RegisterComponent,
-    AccountComponent
+    AccountComponent,
+    FriendsListComponent,
+    FriendsAddComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

@@ -1,0 +1,52 @@
+<div class="friendslist">
+    <div class="friendslist-friends">
+        <div class="friendslist-friends-title">
+            <div class="friendslist-friends-placeholder"></div>
+            <h1>Vrienden</h1>
+            <div class="friendslist-friends-add">
+                <a routerLink="/friends/add">
+                    <span class="material-icons">add</span>
+                </a>
+            </div>
+        </div>
+        <div class="friendslist-friends-list">
+            <div class="friendslist-friends-list-item" *ngFor="let friend of friends">
+                <span><strong>{{friend.name}}</strong></span>
+                <span>{{friend.email}}</span>
+                <span>{{friend.phoneNumber}}</span>
+                <span>{{friend.cars.length}} auto's</span>
+                <button (click)="removeFriend(friend._id)" class="rideDetailButton">Verwijder</button>
+            </div>
+        </div>
+    </div>
+    <div class="friendslist-loader">
+        <div *ngIf="!doneLoading" class="spinner-grow" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+    <div class="friendslist-recommendations" *ngIf="recommendations.length > 0">
+        <div class="friendslist-recommendations-title">
+            <h1>Misschien ken je</h1>
+        </div>
+        <div class="friendslist-recommendations-list">
+            <div class="friendslist-recommendations-list-item" *ngFor="let recom of recommendations">
+                <span><strong>{{recom.name}}</strong></span>
+                <span>{{recom.email}}</span>
+                <button (click)="addFriend(recom._id)" class="rideDetailButton">Voeg toe</button>
+            </div>
+        </div>
+    </div>
+    <div class="friendslist-requests" *ngIf="requests.length > 0">
+        <div class="friendslist-requests-title">
+            <h1>Verzoeken</h1>
+        </div>
+        <div class="friendslist-requests-list">
+            <div class="friendslist-requests-list-item" *ngFor="let req of requests">
+                <span><strong>{{req.name}}</strong></span>
+                <span>{{req.email}}</span>
+                <button (click)="acceptFriend(req._id)" class="rideDetailButton">Accepteren</button>
+                <button (click)="ignoreFriend(req._id)" class="rideDetailButton">Negeren</button>
+            </div>
+        </div>
+    </div>
+</div>

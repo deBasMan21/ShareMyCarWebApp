@@ -1,0 +1,12 @@
+<div class="addfriend">
+    <div class="addfriend-title">
+        <h1>Voeg vrienden toe</h1>
+    </div>
+    <div class="addfriend-list">
+        <div class="addfriend-list-item" *ngFor="let user of users">
+            <span><strong>{{user.name}}</strong></span>
+            <span>{{user.email}}</span>
+            <button (click)="addFriend(user._id)" class="rideDetailButton">Voeg toe</button>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@ const expectedOthercars: Car[] = [
 ];
 
 //describe to start tests
-describe('CarService', () => {
+describe('CarList', () => {
   //mock variables used in tests
   let component: CarListComponent;
   let carService: jasmine.SpyObj<CarServiceService>;

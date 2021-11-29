@@ -12,7 +12,7 @@
         <h3><strong>Aantal auto's:</strong></h3>
         <h3>{{user.cars.length}} auto's</h3>
         <h3><strong>Aantal vrienden:</strong></h3>
-        <h3>0 vrienden</h3>
+        <h3>{{friendCount}} vrienden</h3>
         <h3><strong>Tijd tot opnieuw inloggen:</strong></h3>
         <h3>
             <span *ngIf="expireDateTime.days > 0">{{expireDateTime.days}} dag </span>

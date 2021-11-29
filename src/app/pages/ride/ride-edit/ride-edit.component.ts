@@ -24,7 +24,7 @@ export class RideEditComponent implements OnInit {
     beginDateTime: new Date(),
     endDateTime: new Date(),
     destination: new Location('', '', '', ''),
-    user: new User('', '', '', []),
+    user: new User('', '', '', '', []),
     reservationDateTime: new Date(),
   };
 
@@ -33,7 +33,7 @@ export class RideEditComponent implements OnInit {
     private rideService: RideService,
     private router: Router,
     private authService: AuthenticationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
