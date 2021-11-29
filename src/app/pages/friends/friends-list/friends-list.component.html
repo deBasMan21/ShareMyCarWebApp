@@ -1,12 +1,13 @@
 <div class="friendslist">
-    <div class="friendslist-loader">
-        <div *ngIf="!doneLoading" class="spinner-grow" role="status">
-            <span class="sr-only"></span>
-        </div>
-    </div>
-    <div class="friendslist-friends" *ngIf="friends.length > 0">
+    <div class="friendslist-friends">
         <div class="friendslist-friends-title">
+            <div class="friendslist-friends-placeholder"></div>
             <h1>Vrienden</h1>
+            <div class="friendslist-friends-add">
+                <a routerLink="/friends/add">
+                    <span class="material-icons">add</span>
+                </a>
+            </div>
         </div>
         <div class="friendslist-friends-list">
             <div class="friendslist-friends-list-item" *ngFor="let friend of friends">
@@ -16,6 +17,11 @@
                 <span>{{friend.cars.length}} auto's</span>
                 <button (click)="removeFriend(friend._id)" class="rideDetailButton">Verwijder</button>
             </div>
+        </div>
+    </div>
+    <div class="friendslist-loader">
+        <div *ngIf="!doneLoading" class="spinner-grow" role="status">
+            <span class="sr-only"></span>
         </div>
     </div>
     <div class="friendslist-recommendations" *ngIf="recommendations.length > 0">

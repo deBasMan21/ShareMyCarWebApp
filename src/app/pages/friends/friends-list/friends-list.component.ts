@@ -20,17 +20,23 @@ export class FriendsListComponent implements OnInit {
 
     this.friendsService.getAllFriends().subscribe((res) => {
       this.friends = res;
-      this.doneLoading = true ? this.friends.length > 0 : this.doneLoading;
+      if (res.length > 0) {
+        this.doneLoading = true;
+      }
     });
 
     this.friendsService.getAllFriendRecommendations().subscribe((res) => {
       this.recommendations = res;
-      this.doneLoading = true ? this.recommendations.length > 0 : this.doneLoading;
+      if (res.length > 0) {
+        this.doneLoading = true;
+      }
     });
 
     this.friendsService.getRequests().subscribe((res) => {
       this.requests = res;
-      this.doneLoading = true ? this.requests.length > 0 : this.doneLoading;
+      if (res.length > 0) {
+        this.doneLoading = true;
+      }
     })
   }
 

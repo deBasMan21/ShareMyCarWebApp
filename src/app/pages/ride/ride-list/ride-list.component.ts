@@ -12,7 +12,7 @@ export class RideListComponent implements OnInit {
   public ridesDone: boolean = false;
   rides: Ride[] = [];
 
-  constructor(private rideService: RideService) {}
+  constructor(private rideService: RideService) { }
 
   ngOnInit(): void {
     this.rideService.getRidesForUser().subscribe((rides) => {
@@ -27,7 +27,6 @@ export class RideListComponent implements OnInit {
           new Date(item.reservationDateTime),
           item.user
         );
-        console.log(item.user);
         tempRides.push(ride);
       });
       this.rides = tempRides;

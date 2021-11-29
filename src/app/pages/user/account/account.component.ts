@@ -21,7 +21,6 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getUser().subscribe((user) => {
       this.user = user;
-      console.log((user));
     });
     const time: number = - new Date().getTime();
     let endDate = new Date();

@@ -14,10 +14,23 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
 
         &-title{
-            width: 100%;
+            width: 75%;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+
+            &-placeholder{
+                width: 24px;
+            }
+
+            &-add{
+                
+            }
         }
 
         &-list{

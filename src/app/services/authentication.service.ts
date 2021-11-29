@@ -10,13 +10,12 @@ import { User } from '../pages/user/user.model';
 export class AuthenticationService {
   baseurl: string = 'https://sharemycar.herokuapp.com/api';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(email: String, password: String) {
     this.http
       .post<any>(`${this.baseurl}/login`, { email: email, password: password })
       .subscribe((res) => {
-        console.log(res);
         this.setSession(res);
         this.router.navigate(['/car']);
       });
@@ -64,5 +63,9 @@ export class AuthenticationService {
         this.setSession(res);
         this.router.navigate(['/car']);
       });
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.baseurl}/users`);
   }
 }
