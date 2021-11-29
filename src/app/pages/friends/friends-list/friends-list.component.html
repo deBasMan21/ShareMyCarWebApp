@@ -1,0 +1,27 @@
+<div class="friendslist">
+    <div class="friendslist-friends" *ngIf="friends.length > 0">
+        <div class="friendslist-friends-title">
+            <h1>Vrienden</h1>
+        </div>
+        <div class="friendslist-friends-list">
+            <div class="friendslist-friends-list-item" *ngFor="let friend of friends">
+                <span><strong>{{friend.name}}</strong></span>
+                <span>{{friend.email}}</span>
+                <span>{{friend.phoneNumber}}</span>
+                <span>{{friend.cars.length}} auto's</span>
+            </div>
+        </div>
+    </div>
+    <div class="friendslist-recommendations" *ngIf="recommendations.length > 0">
+        <div class="friendslist-recommendations-title">
+            <h1>Misschien ken je</h1>
+        </div>
+        <div class="friendslist-recommendations-list">
+            <div class="friendslist-recommendations-list-item" *ngFor="let recom of recommendations">
+                <span><strong>{{recom.name}}</strong></span>
+                <span>{{recom.email}}</span>
+                <button (click)="addFriend(recom._id)">Voeg toe</button>
+            </div>
+        </div>
+    </div>
+</div>

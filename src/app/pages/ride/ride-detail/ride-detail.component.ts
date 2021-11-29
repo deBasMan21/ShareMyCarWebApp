@@ -24,7 +24,7 @@ export class RideDetailComponent implements OnInit {
     endDateTime: new Date(2021, 11, 11, 14),
     destination: new Location('', '', '', ''),
     reservationDateTime: new Date(2021, 12, 11, 12),
-    user: new User('', '', '', []),
+    user: new User('', '', '', '', []),
   };
 
   positionMap = {
@@ -50,7 +50,7 @@ export class RideDetailComponent implements OnInit {
     private rideService: RideService,
     private router: Router,
     private authService: AuthenticationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
