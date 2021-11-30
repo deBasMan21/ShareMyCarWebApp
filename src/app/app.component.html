@@ -6,4 +6,10 @@
     <router-outlet></router-outlet>
 </div>
 
+<div class="warning" *ngIf="errorService.showError">
+    <div class="alert alert-danger" role="alert">
+        {{errorService.errorMessage}}
+    </div>
+</div>
+
 <app-footer class="footer"></app-footer>

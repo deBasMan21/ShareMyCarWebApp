@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../pages/user/user.model';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +11,18 @@ import { User } from '../pages/user/user.model';
 export class AuthenticationService {
   baseurl: string = 'https://sharemycar.herokuapp.com/api';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private errorService: ErrorService) { }
 
   login(email: String, password: String) {
     this.http
       .post<any>(`${this.baseurl}/login`, { email: email, password: password })
       .subscribe((res) => {
-        this.setSession(res);
-        this.router.navigate(['/car']);
+        if (res.token) {
+          this.setSession(res);
+          this.router.navigate(['/car']);
+        } else {
+          this.errorService.showError = true;
+        }
       });
   }
 
@@ -60,8 +65,12 @@ export class AuthenticationService {
     return this.http
       .post<any>(`${this.baseurl}/register`, user)
       .subscribe((res) => {
-        this.setSession(res);
-        this.router.navigate(['/car']);
+        if (res.token) {
+          this.setSession(res);
+          this.router.navigate(['/car']);
+        } else {
+          this.errorService.showError = true;
+        }
       });
   }
 

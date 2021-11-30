@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,13 @@ export class LoginComponent implements OnInit {
   password: String = '';
 
   constructor(private authenticationService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private errorService: ErrorService
+  ) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
+
     if (this.authenticationService.isLoggedIn()) {
       this.router.navigate(['/car']);
     }

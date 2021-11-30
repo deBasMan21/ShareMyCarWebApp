@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +10,10 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class RegisterComponent implements OnInit {
   public user: any = { name: '', email: '', phoneNumber: '' };
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private errorService: ErrorService) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
   }
 
   submit() {
