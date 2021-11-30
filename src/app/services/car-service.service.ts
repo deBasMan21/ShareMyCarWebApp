@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, SkipSelf } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Car } from '../pages/car/car.model';
 import { Ride } from '../pages/ride/ride.model';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Ride } from '../pages/ride/ride.model';
 export class CarServiceService {
   cars: Car[] = [];
   baseurl: string = 'https://sharemycar.herokuapp.com/api';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private errorService: ErrorService) { }
 
   getAllCars(): Observable<Car[]> {
     return this.http.get<Car[]>(`${this.baseurl}/car`);

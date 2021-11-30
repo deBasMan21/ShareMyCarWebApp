@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ErrorService } from 'src/app/services/error.service';
 import { FriendsService } from 'src/app/services/friends.service';
 import { User } from '../user.model';
 
@@ -16,11 +17,18 @@ export class AccountComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
     private router: Router,
-    private friendService: FriendsService) { }
+    private friendService: FriendsService,
+    private errorService: ErrorService
+  ) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
     this.authService.getUser().subscribe((user) => {
-      this.user = user;
+      if (user.email) {
+        this.user = user;
+      } else {
+        this.errorService.showError = true;
+      }
     });
     const time: number = - new Date().getTime();
     let endDate = new Date();
@@ -31,7 +39,11 @@ export class AccountComponent implements OnInit {
     this.expireDateTime.minutes = Math.round(((diffMs % 86400000) % 3600000) / 60000) - 1; // minutes
 
     this.friendService.getAllFriends().subscribe((res) => {
-      this.friendCount = res.length;
+      if (res.length) {
+        this.friendCount = res.length;
+      } else {
+        this.errorService.showError = true;
+      }
     });
   }
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Ride } from '../../ride/ride.model';
 import { Car } from '../car.model';
 import { CarServiceService } from 'src/app/services/car-service.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -26,39 +27,49 @@ export class CarDetailComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private carService: CarServiceService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private errorService: ErrorService
+  ) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       this.carService.getCarById(this.id).subscribe((car) => {
-        this.car = car as Car;
-        var tempCars: Ride[] = [];
-        car.reservations.forEach((item) => {
-          const ride: Ride = new Ride(
-            item._id,
-            item.name,
-            new Date(item.beginDateTime),
-            new Date(item.endDateTime),
-            item.destination,
-            new Date(item.reservationDateTime),
-            item.user
-          );
-          if (ride.beginDateTime > new Date()) {
-            tempCars.push(ride);
-          }
-        });
-        this.car.reservations = tempCars;
-        this.showRides = this.car.reservations.length > 0;
-        this.carDone = true;
+        if (!car.isOwner) {
+          this.errorService.showError = true;
+        } else {
+          this.car = car as Car;
+          var tempCars: Ride[] = [];
+          car.reservations.forEach((item) => {
+            const ride: Ride = new Ride(
+              item._id,
+              item.name,
+              new Date(item.beginDateTime),
+              new Date(item.endDateTime),
+              item.destination,
+              new Date(item.reservationDateTime),
+              item.user
+            );
+            if (ride.beginDateTime > new Date()) {
+              tempCars.push(ride);
+            }
+          });
+          this.car.reservations = tempCars;
+          this.showRides = this.car.reservations.length > 0;
+          this.carDone = true;
+        }
       });
     });
   }
 
   deleteCar(): void {
     this.carService.deleteCar(this.id).subscribe((car) => {
-      this.router.navigate(['car']);
+      if (!car._id) {
+        this.errorService.showError = true;
+      } else {
+        this.router.navigate(['car']);
+      }
     });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../car.model';
 import { CarServiceService } from 'src/app/services/car-service.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-car-list',
@@ -12,17 +13,27 @@ export class CarListComponent implements OnInit {
   carsDone: boolean = false;
   cars: Car[] = [];
   friendsCars: Car[] = [];
+  error: boolean = false;
 
-  constructor(private carService: CarServiceService) {}
+  constructor(private carService: CarServiceService, private errorService: ErrorService) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
     this.carService.getAllCars().subscribe((cars) => {
-      this.cars = cars;
-      this.carsDone = true;
+      if (cars.length === undefined) {
+        this.errorService.showError = true;
+      } else {
+        this.cars = cars;
+        this.carsDone = true;
+      }
     });
     this.carService.getCarAllOtherCars().subscribe((cars) => {
-      this.friendsCars = cars;
-      this.otherCarDone = true;
+      if (cars.length === undefined) {
+        this.errorService.showError = true;
+      } else {
+        this.friendsCars = cars;
+        this.otherCarDone = true;
+      }
     });
   }
 }

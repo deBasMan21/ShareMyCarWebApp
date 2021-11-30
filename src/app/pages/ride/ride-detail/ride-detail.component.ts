@@ -7,6 +7,7 @@ import { Location } from '../../location/location.model';
 import { RideService } from 'src/app/services/ride.service';
 import { User } from '../../user/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-ride-detail',
@@ -49,25 +50,40 @@ export class RideDetailComponent implements OnInit {
     private carService: CarServiceService,
     private rideService: RideService,
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private errorService: ErrorService
   ) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
+
     this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.carService.getCarForRide(this.id).subscribe((res) => {
-        this.car = res;
+        if (res.plate) {
+          this.car = res;
+        } else {
+          this.errorService.showError = true;
+        }
       });
       this.rideService.getRideById(this.id).subscribe((res) => {
-        this.ride = res as Ride;
-        this.createDates(res);
-        this.generateMapsUrl();
-        this.authService.getUser().subscribe((user) => {
-          if (this.ride.user.email == user.email) {
-            this.isOwner = true;
-          }
-          this.rideDone = true;
-        });
+        if (res._id) {
+          this.ride = res as Ride;
+          this.createDates(res);
+          this.generateMapsUrl();
+          this.authService.getUser().subscribe((user) => {
+            if (user.email) {
+              if (this.ride.user.email == user.email) {
+                this.isOwner = true;
+              }
+              this.rideDone = true;
+            } else {
+              this.errorService.showError = true;
+            }
+          });
+        } else {
+          this.errorService.showError = true;
+        }
       });
     });
   }
@@ -76,7 +92,11 @@ export class RideDetailComponent implements OnInit {
     this.rideService
       .deleteRideFromCar(this.id, this.car._id!)
       .subscribe((res) => {
-        this.router.navigate([`/car/${this.car._id}`]);
+        if (res._id) {
+          this.router.navigate([`/car/${this.car._id}`]);
+        } else {
+          this.errorService.showError = true;
+        }
       });
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from '../car.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarServiceService } from 'src/app/services/car-service.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-car-edit',
@@ -23,22 +24,24 @@ export class CarEditComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private carService: CarServiceService,
-    private router: Router
+    private router: Router,
+    private errorService: ErrorService
   ) { }
 
   ngOnInit(): void {
+    this.errorService.showError = false;
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       if (this.id != undefined) {
         this.carService.getCarById(this.id).subscribe((car) => {
           this.car = car;
           if (this.car.isOwner) {
-            console.log('is owner');
             this.showEdit = true;
+          } else {
+            this.errorService.showError = true;
           }
         });
       } else {
-        console.log('id is undefined');
         this.showEdit = true;
       }
     });
@@ -46,11 +49,14 @@ export class CarEditComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     await this.carService.updateCar(this.car).subscribe((car) => {
-      console.log(car);
-      if (this.id != undefined) {
-        this.router.navigate([`/car/${this.id}`]);
+      if (!car._id) {
+        this.errorService.showError = true;
       } else {
-        this.router.navigate([`/car`]);
+        if (this.id != undefined) {
+          this.router.navigate([`/car/${this.id}`]);
+        } else {
+          this.router.navigate([`/car`]);
+        }
       }
     });
   }
