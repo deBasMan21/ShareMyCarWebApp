@@ -48,7 +48,8 @@ export class CarEditComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    await this.carService.updateCar(this.car).subscribe((car) => {
+    this.carService.updateCar(this.car).subscribe((car) => {
+      this.car = car;
       if (!car._id) {
         this.errorService.showError = true;
       } else {
