@@ -33,32 +33,29 @@ export class CarDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.errorService.setDefault();
+
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       this.carService.getCarById(this.id).subscribe((car) => {
-        if (!car.isOwner) {
-          this.errorService.showError = true;
-        } else {
-          this.car = car as Car;
-          var tempCars: Ride[] = [];
-          car.reservations.forEach((item) => {
-            const ride: Ride = new Ride(
-              item._id,
-              item.name,
-              new Date(item.beginDateTime),
-              new Date(item.endDateTime),
-              item.destination,
-              new Date(item.reservationDateTime),
-              item.user
-            );
-            if (ride.beginDateTime > new Date()) {
-              tempCars.push(ride);
-            }
-          });
-          this.car.reservations = tempCars;
-          this.showRides = this.car.reservations.length > 0;
-          this.carDone = true;
-        }
+        this.car = car as Car;
+        var tempCars: Ride[] = [];
+        car.reservations.forEach((item) => {
+          const ride: Ride = new Ride(
+            item._id,
+            item.name,
+            new Date(item.beginDateTime),
+            new Date(item.endDateTime),
+            item.destination,
+            new Date(item.reservationDateTime),
+            item.user
+          );
+          if (ride.beginDateTime > new Date()) {
+            tempCars.push(ride);
+          }
+        });
+        this.car.reservations = tempCars;
+        this.showRides = this.car.reservations.length > 0;
+        this.carDone = true;
       });
     });
   }
@@ -68,6 +65,7 @@ export class CarDetailComponent implements OnInit {
       if (!car._id) {
         this.errorService.showError = true;
       } else {
+        this.car = car;
         this.router.navigate(['car']);
       }
     });

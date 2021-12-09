@@ -20,6 +20,7 @@ describe('CarList', () => {
     carService = jasmine.createSpyObj('CarServiceService', [
       'getAllCars',
       'getCarAllOtherCars',
+      'deleteCar'
     ]);
 
     //configure object under test
