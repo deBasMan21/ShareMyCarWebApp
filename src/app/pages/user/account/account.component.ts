@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ErrorService } from 'src/app/services/error.service';
@@ -10,7 +10,7 @@ import { User } from '../user.model';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit, OnDestroy {
   public user: User = { _id: '', name: '', email: '', phoneNumber: '', cars: [] }
   public expireDateTime: any = { days: 0, hours: 0, minutes: 0 };
   public friendCount: number = 0;
@@ -20,9 +20,13 @@ export class AccountComponent implements OnInit {
     private friendService: FriendsService,
     private errorService: ErrorService
   ) { }
+  ngOnDestroy(): void {
+    this.errorService.showError = false;
+    this.errorService.errorMessage = this.errorService.message;
+  }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
     this.authService.getUser().subscribe((user) => {
       if (user.email) {
         this.user = user;
@@ -50,5 +54,9 @@ export class AccountComponent implements OnInit {
   logOut() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  delete() {
+    this.authService.delete(this.user._id);
   }
 }

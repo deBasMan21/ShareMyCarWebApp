@@ -32,7 +32,7 @@ export class CarDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       this.carService.getCarById(this.id).subscribe((car) => {

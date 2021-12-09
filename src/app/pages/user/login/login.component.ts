@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
 
     if (this.authenticationService.isLoggedIn()) {
       this.router.navigate(['/car']);

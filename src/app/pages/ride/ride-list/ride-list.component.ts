@@ -16,7 +16,7 @@ export class RideListComponent implements OnInit {
   constructor(private rideService: RideService, private errorService: ErrorService) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
 
     this.rideService.getRidesForUser().subscribe((rides) => {
       if (rides.length) {

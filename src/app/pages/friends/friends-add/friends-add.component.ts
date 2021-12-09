@@ -20,7 +20,7 @@ export class FriendsAddComponent implements OnInit {
     private errorService: ErrorService) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
     this.authService.getAllUsers().subscribe((users) => {
       if (users.length) {
         this.users = users;

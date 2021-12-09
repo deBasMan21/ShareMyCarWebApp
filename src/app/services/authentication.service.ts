@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { User } from '../pages/user/user.model';
 import { ErrorService } from './error.service';
 
@@ -17,12 +17,14 @@ export class AuthenticationService {
     this.http
       .post<any>(`${this.baseurl}/login`, { email: email, password: password })
       .subscribe((res) => {
+        console.log(res);
         if (res.token) {
           this.setSession(res);
           this.router.navigate(['/car']);
-        } else {
-          this.errorService.showError = true;
         }
+      }, (err) => {
+        this.errorService.errorMessage = err.error.error;
+        this.errorService.showError = true;
       });
   }
 
@@ -76,5 +78,19 @@ export class AuthenticationService {
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseurl}/users`);
+  }
+
+  delete(id: String) {
+    this.http.delete<any>(`${this.baseurl}/user/${id}`).subscribe((res) => {
+      this.logout();
+      this.router.navigate(['/login']);
+      if (res.error) {
+        this.errorService.showError = true;
+      }
+    });
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.baseurl}/user/${user._id}`, user);
   }
 }

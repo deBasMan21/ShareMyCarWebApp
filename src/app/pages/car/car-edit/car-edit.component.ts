@@ -29,7 +29,7 @@ export class CarEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
     this.route.params.subscribe((params: any) => {
       this.id = params['id'];
       if (this.id != undefined) {

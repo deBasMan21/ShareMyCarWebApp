@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthenticationService, private errorService: ErrorService) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
   }
 
   submit() {

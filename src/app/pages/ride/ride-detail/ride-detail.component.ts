@@ -55,7 +55,7 @@ export class RideDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
 
     this.route.params.subscribe((params) => {
       this.id = params['id'];

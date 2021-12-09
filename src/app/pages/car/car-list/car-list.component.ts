@@ -18,7 +18,7 @@ export class CarListComponent implements OnInit {
   constructor(private carService: CarServiceService, private errorService: ErrorService) { }
 
   ngOnInit(): void {
-    this.errorService.showError = false;
+    this.errorService.setDefault();
     this.carService.getAllCars().subscribe((cars) => {
       if (cars.length === undefined) {
         this.errorService.showError = true;

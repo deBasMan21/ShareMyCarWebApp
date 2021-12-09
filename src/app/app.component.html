@@ -7,8 +7,9 @@
 </div>
 
 <div class="warning" *ngIf="errorService.showError">
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{errorService.errorMessage}}
+        <button type="button" class="btn-close" (click)="errorService.showError = false"></button>
     </div>
 </div>
 

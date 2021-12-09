@@ -18,8 +18,8 @@ export class FriendsListComponent implements OnInit {
     private errorService: ErrorService) { }
 
   ngOnInit(): void {
+    this.errorService.setDefault();
     this.doneLoading = false;
-    this.errorService.showError = false;
 
     this.friendsService.getAllFriends().subscribe((res) => {
       if (res.length) {
