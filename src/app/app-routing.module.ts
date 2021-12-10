@@ -14,6 +14,7 @@ import { RegisterComponent } from './pages/user/register/register.component';
 import { AuthorizedGuard } from './authorized.guard';
 import { FriendsListComponent } from './pages/friends/friends-list/friends-list.component';
 import { FriendsAddComponent } from './pages/friends/friends-add/friends-add.component';
+import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'car' },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'login', pathMatch: 'full', component: LoginComponent },
   { path: 'register', pathMatch: 'full', component: RegisterComponent },
   { path: 'account', pathMatch: 'full', component: AccountComponent, canActivate: [AuthorizedGuard] },
+  { path: 'account/edit', pathMatch: 'full', component: UserEditComponent, canActivate: [AuthorizedGuard] },
 
   { path: 'friends', pathMatch: 'full', component: FriendsListComponent, canActivate: [AuthorizedGuard] },
   { path: 'friends/add', pathMatch: 'full', component: FriendsAddComponent, canActivate: [AuthorizedGuard] }

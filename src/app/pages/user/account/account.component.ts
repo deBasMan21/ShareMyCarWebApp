@@ -34,7 +34,6 @@ export class AccountComponent implements OnInit, OnDestroy {
         this.errorService.showError = true;
       }
     });
-    const time: number = - new Date().getTime();
     let endDate = new Date();
     let purchaseDate = this.authService.getExpiration()?.getTime()!;
     let diffMs = (purchaseDate.valueOf() - endDate.valueOf()); // milliseconds
@@ -43,11 +42,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     this.expireDateTime.minutes = Math.round(((diffMs % 86400000) % 3600000) / 60000) - 1; // minutes
 
     this.friendService.getAllFriends().subscribe((res) => {
-      if (res.length) {
-        this.friendCount = res.length;
-      } else {
-        this.errorService.showError = true;
-      }
+      this.friendCount = res.length;
     });
   }
 
@@ -58,5 +53,9 @@ export class AccountComponent implements OnInit, OnDestroy {
 
   delete() {
     this.authService.delete(this.user._id);
+  }
+
+  update() {
+    this.router.navigate(['/account/edit']);
   }
 }

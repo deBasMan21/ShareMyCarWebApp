@@ -8,7 +8,7 @@ import { ErrorService } from 'src/app/services/error.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  public user: any = { name: '', email: '', phoneNumber: '' };
+  public user: any = { name: '', email: '', phoneNumber: '', key: '' };
 
   constructor(private authService: AuthenticationService, private errorService: ErrorService) { }
 

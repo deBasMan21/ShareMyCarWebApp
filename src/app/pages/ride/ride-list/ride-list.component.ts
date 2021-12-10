@@ -34,10 +34,11 @@ export class RideListComponent implements OnInit {
           tempRides.push(ride);
         });
         this.rides = tempRides;
-        this.ridesDone = true;
       } else {
+        this.errorService.errorMessage = 'Je hebt nog geen ritten aangemaakt'
         this.errorService.showError = true;
       }
+      this.ridesDone = true;
     });
   }
 }
