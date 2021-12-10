@@ -27,6 +27,7 @@ import { DateValidatorDirective } from './shared/dateValidator.directive';
 import { ZipValidatorDirective } from './shared/zipValidator.directive';
 import { StreetValidatorDirective } from './shared/streetValidator.directive';
 import { PhoneValidatorDirective } from './shared/phoneValidator.directive';
+import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PhoneValidatorDirective } from './shared/phoneValidator.directive';
     DateValidatorDirective,
     ZipValidatorDirective,
     StreetValidatorDirective,
-    PhoneValidatorDirective
+    PhoneValidatorDirective,
+    UserEditComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

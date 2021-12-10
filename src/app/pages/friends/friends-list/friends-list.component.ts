@@ -24,33 +24,24 @@ export class FriendsListComponent implements OnInit {
     this.friendsService.getAllFriends().subscribe((res) => {
       if (res.length) {
         this.friends = res;
-        if (res.length > 0) {
-          this.doneLoading = true;
-        }
       } else {
+        this.errorService.errorMessage = 'Je hebt nog geen vrienden gemaakt';
         this.errorService.showError = true;
       }
+      this.doneLoading = true;
     });
 
     this.friendsService.getAllFriendRecommendations().subscribe((res) => {
-      if (res.length) {
-        this.recommendations = res;
-        if (res.length > 0) {
-          this.doneLoading = true;
-        }
-      } else {
-        this.errorService.showError = true;
+      this.recommendations = res;
+      if (res.length > 0) {
+        this.doneLoading = true;
       }
     });
 
     this.friendsService.getRequests().subscribe((res) => {
-      if (res.length) {
-        this.requests = res;
-        if (res.length > 0) {
-          this.doneLoading = true;
-        }
-      } else {
-        this.errorService.showError = true;
+      this.requests = res;
+      if (res.length > 0) {
+        this.doneLoading = true;
       }
     })
   }

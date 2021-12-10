@@ -1,0 +1,26 @@
+<div class="register">
+    <div class="register-title">
+        <h1>Werk account bij</h1>
+    </div>
+    <div class="register-form">
+        <form #registerForm="ngForm" name="form" (ngSubmit)="registerForm.form.valid && submit()" novalidate>
+            <div class="register-form-field">
+                <label>Naam:</label>
+                <input type="text" name="name" [(ngModel)]="user.name" #username="ngModel" required>
+                <label class="register-form-field-validation" *ngIf="username.invalid && username.touched">Naam moet
+                    ingevuld zijn</label>
+            </div>
+            <div class="register-form-field">
+                <label>Telefoonnummer:</label>
+                <input validPhone type="tel" name="phoneNumber" [(ngModel)]="user.phoneNumber" #userphone="ngModel"
+                    required>
+                <label class="register-form-field-validation"
+                    *ngIf="userphone.invalid && userphone.touched">Telefoonnummer moet
+                    ingevuld zijn</label>
+            </div>
+            <div class="register-form-field">
+                <input type="submit" class="rideDetailButton" value="Werk bij" [disabled]="!registerForm.valid">
+            </div>
+        </form>
+    </div>
+</div>

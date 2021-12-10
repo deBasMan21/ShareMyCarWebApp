@@ -11,6 +11,13 @@
                     ingevuld zijn</label>
             </div>
             <div class="register-form-field">
+                <label>Wachtwoord:</label>
+                <input type="password" name="key" [(ngModel)]="user.key" #userpassword="ngModel" required>
+                <label class="register-form-field-validation"
+                    *ngIf="userpassword.invalid && userpassword.touched">Wachtwoord
+                    moet ingevuld zijn</label>
+            </div>
+            <div class="register-form-field">
                 <label>Email:</label>
                 <input type="text" name="email" [(ngModel)]="user.email" #useremail="ngModel" email required>
                 <label class="register-form-field-validation" *ngIf="useremail.invalid && useremail.touched">Email moet
